@@ -1,0 +1,181 @@
+/* 
+    Document   : style
+    Created on : 3-jun-2013, 21:43:12
+    Author     : Marc de Boer, Tijs de Puysseleijr
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+td, th {
+    color: white; 
+}
+* {
+    margin: 0 auto;
+}
+html, body {
+    text-align: center;
+    background: url(/cegelec/img/bg.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+#logo {
+	margin: 0 auto;
+}
+header {  
+}
+nav {
+    margin: 30px auto;
+    color: white; 
+}
+/*
+Dashboard
+*/
+.wijzigLeerling{
+    background-color: white;
+    border-left-style: none;
+    margin-top: 10px;
+    font-weight: 500;
+    font-family: Segoe UI Light;
+}
+#dashboard {
+    margin: 0 auto;
+    width: 960px;
+    display: table;
+}
+#dashboardbutton {
+    padding-top: 50px;
+    float: left;
+    width: 50%;
+}
+#dashboardbutton img {
+    min-width: 50px;
+    min-height: 50px;
+}
+
+#main {
+  width: 1200px;
+  padding: 40px 0;
+  margin: 40px auto;
+  font-family: "Segoe UI Light";
+  display: table;
+  color: #000;
+  background: -webkit-radial-gradient(circle, #c6d200, #5d8f16);
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from(#c6d200), to(#5d8f16));
+  background: -moz-radial-gradient(circle, #c6d200, #5d8f16);
+  background: -ms-radial-gradient(50% 50%, closest-cor333ner, #c6d200, #5d8f16);
+  background: radial-gradient(circle at 50% 50%, #c6d200 0%, #5d8f16 110%);
+  border-radius: 25px;
+}
+p {
+	padding-top:20px;
+        text-align: left;
+}
+#main a{
+	font-size: 100%;
+	text-decoration: blink;
+	color: white;
+	font-family: "Segoe UI Light";
+}
+#main a:hover {
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    text-decoration:none;
+    color:#626262;
+}
+#main h2 {
+	font-family: "Segoe UI Light";
+        text-align: center;
+        max-width: 650px;
+        width: 100%;
+        background-color: #004087;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        margin-bottom: 10px;
+        color: white;
+}       
+a:hover { 
+	   text-decoration:none;  
+}
+#gebruikers .right {
+    float: right;
+}
+/* Gebruiker */
+section#gebruiker {
+    max-width: 720px;
+    text-align: left;
+}
+#gebruiker table{
+    width: 100%;
+    border: 0;
+    border-color: transparent;
+}
+#gebruiker td, #gebruiker th {
+    color: #000 !important;
+}
+
+#leeringoverzichttabel
+
+{
+  
+   margin: auto;
+   width: 600px;
+   height: 100%;
+   background-color: green;
+   
+   
+   
+}
+
+#leerlingoverzichtwraper{
+    margin: auto;
+    
+    height: 600px;
+    width: 1200px;
+}
+
+
+label, input {
+ display : block;
+ float : center;
+ color: black;
+ color: black;
+ }
+label {
+
+ text-align : right;
+ }
+ td label {
+    margin-right: 100px;
+
+ }
+ 
+br {
+ clear: both;
+ 
+  .f1, .f2 {
+ display : block;
+ float : right;
+
+ color: white;
+
+ 
+
+ color: black;
+ 
+
+ }
+.f1 {
+ width : 20%;
+ text-align : right;
+ margin-right: 100px;
+ }
+br {
+ clear: both;
+}
+}
