@@ -1,9 +1,5 @@
 <?php
 
-include_once 'classes/defs/constants.php';
-require_once FILE_DB_LOCATIE;
-require_once('locatieLijst.php');
-
 class Locatie 
 {
 	// --- ASSOCIATIONS ---

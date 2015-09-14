@@ -1,6 +1,4 @@
 <?php
-include_once FILE_DB;
-
 class DbRecht extends Database {
 
         private $recht_positie;

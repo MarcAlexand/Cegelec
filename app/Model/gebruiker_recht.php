@@ -19,13 +19,6 @@ if (0 > version_compare(PHP_VERSION, '5')) {
     die('This file was generated for PHP 5');
 }
 
-
-
-/* user defined includes */
-// section -84-19-79-127--5d57aaf1:14c26dc8191:-8000:0000000000001A90-includes begin
-require_once FILE_M_RECHTBITFIELD;
-require_once FILE_M_GEBRUIKER;
-require_once FILE_M_RECHTGROEP;
 // section -84-19-79-127--5d57aaf1:14c26dc8191:-8000:0000000000001A90-includes end
 
 /* user defined constants */

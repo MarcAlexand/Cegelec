@@ -27,7 +27,6 @@ if (0 > version_compare(PHP_VERSION, '5')) {
 
 /* user defined includes */
 // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C3C-includes begin
-require_once FILE_DB_CURSUSBLOK;
 // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C3C-includes end
 
 /* user defined constants */

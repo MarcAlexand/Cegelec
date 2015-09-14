@@ -7,8 +7,6 @@
  * @version 0.1
  */
 
-require_once FILE_DB;
-
 class DbRechtGroep extends Database {
     
     private $rechtgroep_id;

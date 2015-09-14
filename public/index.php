@@ -1,10 +1,7 @@
 <?php
+require "../vendor/autoload.php";
 ob_start();
 include_once '../app/defs/constants.php';
-include_once FILE_M_GEBRUIKER;
-include FILE_M_GEBRUIKER_RECHT;
-include_once FILE_M_LOGINSYSTEEM;
-include_once FILE_DEFS_RECHTCONSTANS;
 $rechten = new RechtConstants();
 $reflection = new ReflectionClass($rechten);
 $recht_array = $reflection->getConstants();

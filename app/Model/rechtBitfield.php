@@ -5,8 +5,6 @@
  */
 define ('MAX_BIT_POSITION_IN_BITFIELD', 2048);
 define ('NUMBER_OF_BITS_IN_BITFIELD_PART', 31);
-    
-include_once FILE_M_BITFIELD;
 
 /**
  * Description of class RechtBitfield

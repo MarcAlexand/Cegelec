@@ -7,9 +7,6 @@
  * @author Sander van Belleghem
  *
      */
-
-require_once FILE_DB_RECHT;
-
 class Recht {
 
     private $beschrijving = '';

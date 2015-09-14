@@ -9,9 +9,6 @@ define ('RECHT_GROUP_NAME_IS_ADMIN', 'Admin');
  *                               and moved functionality accordingly.
  *                               Added replaceRechtBitfield() / heeftRecht().
  */
-require_once FILE_DB_RECHTGROEP;
-require_once FILE_M_RECHTBITFIELD;
-
 class RechtGroep {
 
     private $recht_groep_beschrijving = '';

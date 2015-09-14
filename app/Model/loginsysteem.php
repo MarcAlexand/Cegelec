@@ -1,35 +1,5 @@
 <?php
 ob_start();
-error_reporting(E_ALL);
-
-/**
- * Cegelec 2 Renewed - class.LoginsysteemModel.php
- *
- * $Id$
- *
- * This file is part of Cegelec 2 Renewed.
- *
- * Automatically generated on 27.03.2015, 11:08:28 with ArgoUML PHP module 
- * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-
-if (0 > version_compare(PHP_VERSION, '5')) {
-    die('This file was generated for PHP 5');
-}
-
-
-require_once FILE_DB_LOGINSTYSTEEM;
-require_once FILE_M_SESSION;
-/* user defined includes */
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C9E-includes begin
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C9E-includes end
-
-/* user defined constants */
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C9E-constants begin
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C9E-constants end
-
 /**
  * Short description of class LoginsysteemModel
  *
@@ -101,7 +71,7 @@ class Login
 		$this->user = new Gebruiker(new DbGebruiker());
                 $this->dbuser = new DbGebruiker();
 		// Nieuw object van DbLoginSysteem
-		$this->db = new DbLoginSysteem;
+		$this->db = new DbLoginsysteem;
 		// Nieuw object van Session
 		$this->session = new Session;
     }

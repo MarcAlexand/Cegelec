@@ -9,8 +9,6 @@
  * - de gebruiker tabel lezen/schrijven/updaten/deleten
  * 
  * */
-require_once FILE_DB_DATABASE;
-
 class DbLocatie extends Database {
 
     /**

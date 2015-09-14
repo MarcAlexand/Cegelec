@@ -1,32 +1,4 @@
 <?php
-
-error_reporting(E_ALL);
-
-/**
- * Cegelec 2 Renewed - class.db_gebruiker.php
- *
- * $Id$
- *
- * This file is part of Cegelec 2 Renewed.
- *
- * Automatically generated on 06.04.2015, 18:44:22 with ArgoUML PHP module 
- * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-if (0 > version_compare(PHP_VERSION, '5')) {
-    die('This file was generated for PHP 5');
-}
-
-/* user defined includes */
-// section 10-0-3-49--6022aa35:14bdfb8146c:-8000:000000000000089A-includes begin
-require_once FILE_DB;
-// section 10-0-3-49--6022aa35:14bdfb8146c:-8000:000000000000089A-includes end
-
-/* user defined constants */
-// section 10-0-3-49--6022aa35:14bdfb8146c:-8000:000000000000089A-constants begin
-// section 10-0-3-49--6022aa35:14bdfb8146c:-8000:000000000000089A-constants end
-
 /**
  * Short description of class db_gebruiker
  *

@@ -19,14 +19,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
     die('This file was generated for PHP 5');
 }
 
-/**
- * include
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-require_once FILE_DB_MEETWAARDE;
 
-/* user defined includes */
 // section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000DCE-includes begin
 // section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000DCE-includes end
 

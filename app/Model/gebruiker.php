@@ -1,41 +1,4 @@
 <?php
-
-/**
- * Cegelec 2 Renewed - class.Gebruiker.php
- *
- * $Id$
- *
- * This file is part of Cegelec 2 Renewed.
- *
- * Automatically generated on 23.06.2015, 12:43:01 with ArgoUML PHP module 
- * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-
-
-/**
- * include Cursusblok_Controle
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-
-/**
- * include Cursus
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-
-/* user defined includes */
-// section -84-19-69-71--6add4d69:14bee37f7a2:-8000:0000000000000BED-includes begin
-require_once FILE_DB_GEBRUIKER;
-require_once FILE_M_RECHTBITFIELD;
-// section -84-19-69-71--6add4d69:14bee37f7a2:-8000:0000000000000BED-includes end
-
-/* user defined constants */
-// section -84-19-69-71--6add4d69:14bee37f7a2:-8000:0000000000000BED-constants begin
-// section -84-19-69-71--6add4d69:14bee37f7a2:-8000:0000000000000BED-constants end
-
 /**
  * Short description of class Gebruiker
  *

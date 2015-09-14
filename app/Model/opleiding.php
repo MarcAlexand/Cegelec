@@ -25,15 +25,6 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  * @author firstname and lastname of author, <author@example.org>
  */
 
-/* user defined includes */
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CAC-includes begin
-require_once FILE_DB_OPLEIDING;
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CAC-includes end
-
-/* user defined constants */
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CAC-constants begin
-// section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CAC-constants end
-
 /**
  * Short description of class Opleiding
  *

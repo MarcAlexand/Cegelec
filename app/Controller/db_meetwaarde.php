@@ -1,33 +1,4 @@
 <?php
-
-error_reporting(E_ALL);
-
-/**
- * Cegelec 2 Renewed - class.db_meetwaarde.php
- *
- * $Id$
- *
- * This file is part of Cegelec 2 Renewed.
- *
- * Automatically generated on 11.06.2015, 09:05:05 with ArgoUML PHP module 
- * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
- *
- * @author firstname and lastname of author, <author@example.org>
- */
-
-if (0 > version_compare(PHP_VERSION, '5')) {
-    die('This file was generated for PHP 5');
-}
-
-/* user defined includes */
-// section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000DF6-includes begin
-require_once FILE_DB;
-// section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000DF6-includes end
-
-/* user defined constants */
-// section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000DF6-constants begin
-// section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000DF6-constants end
-
 /**
  * Short description of class db_meetwaarde
  *
