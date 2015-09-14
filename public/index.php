@@ -1,6 +1,6 @@
 <?php
 ob_start();
-include_once '/defs/constants.php';
+include_once '../app/defs/constants.php';
 include_once FILE_M_GEBRUIKER;
 include FILE_M_GEBRUIKER_RECHT;
 include_once FILE_M_LOGINSYSTEEM;

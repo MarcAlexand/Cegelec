@@ -66,10 +66,10 @@ class Cursus
 
     /**
      * Short description of attribute cursus_eindDatum
-     *
-     * @access private
-     * @var Date
-     */
+*
+* @access private
+* @var Date
+*/
     private $cursus_eindDatum = null;
 
     // --- OPERATIONS ---

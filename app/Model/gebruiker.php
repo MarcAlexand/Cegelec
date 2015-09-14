@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(E_ALL);
-
 /**
  * Cegelec 2 Renewed - class.Gebruiker.php
  *

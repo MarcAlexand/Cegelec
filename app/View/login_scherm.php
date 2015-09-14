@@ -28,14 +28,14 @@ if(isset($_POST['inloggen'])) {
 <head>
 	<meta charset="UTF-8">
 	<title>Cegelec | Inloggen</title>
-        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../public/style/style.css">
 </head>
 <body>
     <div id="main">
 	<div id="loginwrap">
             <span id="logo">
                 <a href="<?php echo URL_DASHBOARD ?>">
-                    <img src="../img/actemium.png"/>
+                    <img src="../public/img/actemium.png"/>
                 </a>
             </span>
             <form method="POST" class="formulier">

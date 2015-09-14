@@ -19,10 +19,10 @@ set_include_path( get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'
 
 define("WWW_ROOT",                          "/cegelec/");
  define("HOME",                             WWW_ROOT."index.php");
- define("DIR_MODEL",                        WWW_ROOT."Model/");
- define("DIR_VIEW",                         WWW_ROOT."View/");
- define("DIR_CONTROLLER",                   WWW_ROOT."Controller/");
- define("DIR_DEFS",                         WWW_ROOT."defs/");
+ define("DIR_MODEL",                        WWW_ROOT."app/Model/");
+ define("DIR_VIEW",                         WWW_ROOT."app/View/");
+ define("DIR_CONTROLLER",                   WWW_ROOT."app/Controller/");
+ define("DIR_DEFS",                         WWW_ROOT."app/defs/");
  
  // CONSTATNS
  define("FILE_DB_CONSTANTS",                DIR_DEFS."db_constants.php");

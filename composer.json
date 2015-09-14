@@ -1,0 +1,16 @@
+{
+    "name": "donny/cegelec",
+    "authors": [
+        {
+            "name": "Donny van Walsem",
+            "email": "donnehvw@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Cegelec\\": "app/"
+        }
+    },
+    "require": {},
+    "version": "0.1.0-dev"
+}
