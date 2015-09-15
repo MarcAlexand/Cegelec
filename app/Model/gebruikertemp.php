@@ -5,7 +5,7 @@
  * @access public
  * @author firstname and lastname of author, <author@example.org>
  */
-class Gebruiker
+class Gebruikertemp
 {
     // --- ASSOCIATIONS ---
     // generateAssociationEnd :     // generateAssociationEnd : 

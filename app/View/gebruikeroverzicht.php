@@ -1,5 +1,4 @@
 <?php
-include_once FILE_M_GEBRUIKER;
 
 
 
@@ -14,7 +13,7 @@ include_once FILE_M_GEBRUIKER;
                 break;
         }
     } else {
-        $gebruiker = new Gebruiker();
+        $gebruiker = new Gebruiker(new DbGebruiker());
         $gebruiker_list= $gebruiker->getGebruikerList();
         ?>
 <h2>
@@ -63,43 +62,43 @@ include_once FILE_M_GEBRUIKER;
                     </a>'
                 . '</td>'
                 . '<td>';
-                if($gebruikers->getGebruikerActief() == 1){
+                if($gebruikers->getActief() == 1){
                         echo '<img  width="30" src="img/gebruiker_actief.png" />';
                 } else {
                     echo '<img width="30" src="img/gebruiker_inactief.png" />';
                 } echo '</td>'
                 . '<td>'
-                    .$gebruikers->getGebruikerVoornaam()
+                    .$gebruikers->getVoornaam()
                 . '</td>'
                 . '<td>'
-                    .$gebruikers->getGebruikerTussenvoegsel()
+                    .$gebruikers->getTussenvoegsel()
                 . '</td>'
                 . '<td>'
-                    .$gebruikers->getGebruikerAchternaam()
+                    .$gebruikers->getAchternaam()
                 . '</td>'
                 . '<td>'
-                    .$gebruikers->getGebruikerUser()
+                    .$gebruikers->getUsername()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerEmail()
+                    . $gebruikers->getEmail()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerGeboorteDatum()
+                    . $gebruikers->getGeboorteDatum()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerAdres()
+                    . $gebruikers->getAdres()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerWoonplaats()
+                    . $gebruikers->getWoonplaats()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerTelefoonPrive()
+                    . $gebruikers->getTelefoonPrive()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerTelefoonWerk()
+                    . $gebruikers->getTelefoonWerk()
                 . '</td>'
                 . '<td>'
-                    . $gebruikers->getGebruikerInDienst()
+                    . $gebruikers->getDienst()
                 . '</td>'        
                 . '<td>'
                     . "recht"

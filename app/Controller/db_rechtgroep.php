@@ -433,9 +433,3 @@ class DbRechtGroep extends Database {
         return $result;
     }
 }
-
-
-
-
-
-?>

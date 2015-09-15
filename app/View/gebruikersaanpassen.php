@@ -1,10 +1,7 @@
 <?php
-
-include_once FILE_M_GEBRUIKER;
-include_once FILE_M_RECHT;
 // @TODO put constant in constant file
 define("NEVER_LOGGED_IN", 2);
-$gebruiker = new Gebruiker();
+$gebruiker = new Gebruiker(new DbGebruiker());
 $gebruiker_persoon = $gebruiker->getGebruikerById($_GET["id"]);
 
 $error_array = array();
@@ -15,7 +12,7 @@ $error = FALSE;
 if(isset($_POST) && !empty($_POST)){
     
     $args = array(
-        'gebruiker_user' => FILTER_SANITIZE_STRING,
+        'gebruiker_username' => FILTER_SANITIZE_STRING,
         'gebruiker_voornaam' => FILTER_SANITIZE_STRING,
         'gebruiker_tussenvoegsel' => FILTER_SANITIZE_STRING,
         'gebruiker_achternaam' => FILTER_SANITIZE_STRING,
@@ -39,7 +36,7 @@ if(isset($_POST) && !empty($_POST)){
         'gebruiker_actief' => FILTER_VALIDATE_BOOLEAN,
     );
     $myinputs = filter_input_array(INPUT_POST, $args);
-    
+
     foreach ($myinputs as $key => $value) {
         //skip gebruiker actief(boolean)
         if ($key === 'gebruiker_actief') {
@@ -90,7 +87,7 @@ if(isset($_POST) && !empty($_POST)){
     if($error === FALSE){
                
         
-           $gebruiker = new Gebruiker();
+           $gebruiker = new Gebruiker(new DbGebruiker());
             try {
                 //gerbuiker info saven 
                 $gebruiker->updateGebruiker($myinputs, $_GET["id"]);
@@ -120,7 +117,7 @@ if(isset($_POST) && !empty($_POST)){
                 Gebruikersnaam :
             </td>
             <td>
-                <input type="text" name="gebruiker_user" value="<?php echo $gebruiker_persoon->getGebruikerUser()?>"/>
+                <input type="text" name="gebruiker_user" value="<?php echo $gebruiker_persoon->getUsername()?>"/>
             </td>
         </tr>
         <tr>
@@ -136,7 +133,7 @@ if(isset($_POST) && !empty($_POST)){
                 E-mail adres :
             </td>
             <td>
-                <input type="mail" name="gebruiker_email" value="<?php echo $gebruiker_persoon->getGebruikerEmail()?>"/>
+                <input type="mail" name="gebruiker_email" value="<?php echo $gebruiker_persoon->getEmail()?>"/>
             </td>
         </tr>
         <tr>
@@ -149,7 +146,7 @@ if(isset($_POST) && !empty($_POST)){
                 Voornaam :
             </td>
             <td>
-                <input type="text" name="gebruiker_voornaam" value="<?php echo $gebruiker_persoon->getGebruikerVoornaam()?>"/>
+                <input type="text" name="gebruiker_voornaam" value="<?php echo $gebruiker_persoon->getVoornaam()?>"/>
             </td>
         </tr>
         <tr>
@@ -157,7 +154,7 @@ if(isset($_POST) && !empty($_POST)){
                 Tussenvoegsel :
             </td>
             <td>
-                <input type="text" name="gebruiker_tussenvoegsel" value="<?php echo $gebruiker_persoon->getGebruikerTussenvoegsel()?>"/>
+                <input type="text" name="gebruiker_tussenvoegsel" value="<?php echo $gebruiker_persoon->getTussenvoegsel()?>"/>
             </td>
         </tr>
         <tr>
@@ -165,7 +162,7 @@ if(isset($_POST) && !empty($_POST)){
                 Achternaam :
             </td>
             <td>
-                <input type="text" name="gebruiker_achternaam" value="<?php echo $gebruiker_persoon->getGebruikerAchternaam()?>"/>
+                <input type="text" name="gebruiker_achternaam" value="<?php echo $gebruiker_persoon->getAchternaam()?>"/>
             </td>
         </tr>
         <tr>
@@ -173,7 +170,7 @@ if(isset($_POST) && !empty($_POST)){
                 Geboortedatum :
             </td>
             <td>
-                <input type="date" name="gebruiker_geboorteDatum" value="<?php echo $gebruiker_persoon->getGebruikerGeboorteDatum()?>"/>
+                <input type="date" name="gebruiker_geboorteDatum" value="<?php echo $gebruiker_persoon->getGeboorteDatum()?>"/>
             </td>
         </tr>
         <tr><td colspan="2">&nbsp;</td></tr>
@@ -182,7 +179,7 @@ if(isset($_POST) && !empty($_POST)){
                 Adres :
             </td>
             <td>
-                <input type="text" name="gebruiker_adres" value="<?php echo $gebruiker_persoon->getGebruikerAdres()?>"/>
+                <input type="text" name="gebruiker_adres" value="<?php echo $gebruiker_persoon->getAdres()?>"/>
             </td>
         </tr>
         <tr>
@@ -190,7 +187,7 @@ if(isset($_POST) && !empty($_POST)){
                 Woonplaats :
             </td>
             <td>
-                <input type="text" name="gebruiker_woonplaats" value="<?php echo $gebruiker_persoon->getGebruikerWoonplaats()?>"/>
+                <input type="text" name="gebruiker_woonplaats" value="<?php echo $gebruiker_persoon->getWoonplaats()?>"/>
             </td>
         </tr>
         <tr>
@@ -198,7 +195,7 @@ if(isset($_POST) && !empty($_POST)){
                 Telefoonnummer prive :
             </td>
             <td>
-                <input type="text" name="gebruiker_telefoonPrive" value="<?php echo $gebruiker_persoon->getGebruikerTelefoonPrive()?>"/>
+                <input type="text" name="gebruiker_telefoonPrive" value="<?php echo $gebruiker_persoon->getTelefoonPrive()?>"/>
             </td>
         </tr>
         <tr>
@@ -206,7 +203,7 @@ if(isset($_POST) && !empty($_POST)){
                 Telefoonnummer werk :
             </td>
             <td>
-                <input type="text" name="gebruiker_telefoonWerk" value="<?php echo $gebruiker_persoon->getGebruikerTelefoonWerk()?>"/>
+                <input type="text" name="gebruiker_telefoonWerk" value="<?php echo $gebruiker_persoon->getTelefoonWerk()?>"/>
             </td>
         </tr>
         <tr><td colspan="2">&nbsp;</td></tr>
@@ -215,7 +212,7 @@ if(isset($_POST) && !empty($_POST)){
                 Indienst sinds :
             </td>
             <td>
-                <input type="date" name="gebruiker_inDienst" value="<?php echo $gebruiker_persoon->getGebruikerInDienst()?>"/>
+                <input type="date" name="gebruiker_inDienst" value="<?php echo $gebruiker_persoon->getDienst()?>"/>
             </td>
         </tr>
         <tr>

@@ -18,7 +18,7 @@ set_include_path( get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'
 //echo get_include_path();
 
 define("WWW_ROOT",                          "/cegelec/");
- define("HOME",                             WWW_ROOT."index.php");
+ define("HOME",                             WWW_ROOT."public/index.php");
  define("DIR_MODEL",                        WWW_ROOT."app/Model/");
  define("DIR_VIEW",                         WWW_ROOT."app/View/");
  define("DIR_CONTROLLER",                   WWW_ROOT."app/Controller/");
@@ -57,7 +57,7 @@ define("WWW_ROOT",                          "/cegelec/");
  
  // GEBRUIKER
  define("FILE_DB_GEBRUIKER",                DIR_CONTROLLER."db_gebruiker.php");
- define("FILE_M_GEBRUIKER",                 DIR_MODEL."gebruiker.php");
+ define("FILE_M_GEBRUIKER",                 DIR_MODEL."gebruikertemp.php");
  define("FILE_M_GEBRUIKER_RECHT",           DIR_MODEL."gebruiker_recht.php");
  define("FILE_V_GEBRUIKERSOVERZICHT",       DIR_VIEW."gebruikeroverzicht.php");
  define("URL_WEERGEVEN_USER_BEHEER",        "Gebruikers");

@@ -1,8 +1,7 @@
 <?php
 ob_start();
+require '../../vendor/autoload.php';
 require_once '../defs/constants.php';
-require_once FILE_M_GEBRUIKER;
-require_once FILE_M_LOGINSYSTEEM;
 // Nieuw object van Login class
 $login = new Login;
 // Controleer of gebruiker al ingelogd is, zoja ga dan naar de index pagina
@@ -28,14 +27,14 @@ if(isset($_POST['inloggen'])) {
 <head>
 	<meta charset="UTF-8">
 	<title>Cegelec | Inloggen</title>
-        <link rel="stylesheet" href="../public/style/style.css">
+        <link rel="stylesheet" href="../../public/style/style.css">
 </head>
 <body>
     <div id="main">
 	<div id="loginwrap">
             <span id="logo">
                 <a href="<?php echo URL_DASHBOARD ?>">
-                    <img src="../public/img/actemium.png"/>
+                    <img src="../../public/img/actemium.png"/>
                 </a>
             </span>
             <form method="POST" class="formulier">

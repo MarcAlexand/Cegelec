@@ -243,6 +243,4 @@ class DbOpleiding
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008F9 end
     }
 
-} /* end of class DbOpleiding */
-
-?>
+}

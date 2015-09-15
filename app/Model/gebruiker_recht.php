@@ -213,6 +213,4 @@ class GebruikerRecht
         }
     }
 
-} /* end of class GebruikerRechtModel */
-
-?>
+}

@@ -349,6 +349,4 @@ class database
         // section -84-19-82--123-1a43ac82:14e0569be64:-8000:0000000000000ECF end
     }
 
-} /* end of class database */
-
-?>
+}

@@ -30,8 +30,7 @@ class DbLocatie extends Database {
     private $locatie_actief;
 
     /**
-     * Calls Database's constructor. 
-     * @param type $id
+     * Calls Database's constructor. \
      * @return boolean
      */
     public function construct() {
@@ -166,11 +165,11 @@ class DbLocatie extends Database {
         $rechten = serialize($rechten);
         // Query updates the item using inserted parameters. 
         $query = "UPDATE `gebruiker` 
-                    SET `gebruiker_naam` = '" . mysql_real_escape_string($gebruiker_naam) . "', 
-                        `gebruiker_recht` = '" . mysql_real_escape_string($rechten) . "', 
-                        `sessie_id` = '" . mysql_real_escape_string($sessie_id) . "', 
-                        `gebruiker_wachtwoord` = '" . mysql_real_escape_string($gebruiker_wachtwoord) . "' WHERE   
-                        `gebruiker_id` =" . mysql_real_escape_string($gebruiker_id);
+                    SET `gebruiker_naam` = '" . mysqli_real_escape_string($gebruiker_naam) . "',
+                        `gebruiker_recht` = '" . mysqli_real_escape_string($rechten) . "',
+                        `sessie_id` = '" . mysqli_real_escape_string($sessie_id) . "',
+                        `gebruiker_wachtwoord` = '" . mysqli_real_escape_string($gebruiker_wachtwoord) . "' WHERE
+                        `gebruiker_id` =" . mysqli_real_escape_string($gebruiker_id);
         
         if (!$this->dbquery($query)) {
             return false;
@@ -184,5 +183,3 @@ class DbLocatie extends Database {
     }
 
 }
-
-?>

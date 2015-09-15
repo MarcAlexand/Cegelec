@@ -29,7 +29,7 @@ if (isset($_POST) && !empty($_POST)) {
     //variabele voor foutmelding
     $error = FALSE;
     //nieuw object gebruiker
-    $gebruiker = new Gebruiker();
+    $gebruiker = new Gebruiker(new DbGebruiker);
       
     
     //Alles valideren
@@ -118,7 +118,7 @@ if (isset($_POST) && !empty($_POST)) {
            
             try {
                 //gerbuiker info saven 
-                $gebruiker->saveGebruiker($myinputs);
+                $gebruiker->save($myinputs);
             } catch (Exception $exc) {
                 // Fout gevonden;
                 $error = TRUE;
@@ -129,82 +129,7 @@ if (isset($_POST) && !empty($_POST)) {
     }
 }
 ?>
-
-<!--<SCRIPT language="javascript">
-        function addRow(tableID) {
-
-            var table = document.getElementById(tableID);
-
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-
-            var cell1 = row.insertCell(0);
-            var element1 = document.createElement("input");
-            element1.type = "text";
-            element1.name="gebruikersnaam";
-            cell1.appendChild(element1);
-
-            var cell2 = row.insertCell(1);
-            var element2 = document.createElement("input");
-            element2.type = "text";
-            element2.name = "voornaam";
-            cell2.appendChild(element2);
-
-            var cell3 = row.insertCell(2);
-            var element3 = document.createElement("input");
-            element3.type = "text";
-            element3.name = "achternaam";
-            cell3.appendChild(element3);
-            
-            var cell4 = row.insertCell(3);
-            var element4 = document.createElement("input");
-            element4.type = "mail";
-            element4.name = "emailadres";
-            cell4.appendChild(element4);
-            
-            var cell5 = row.insertCell(4);
-            var element5 = document.createElement("select");
-            //element2.type = "select";
-            var option1 = document.createElement("option");
-            option1.innerHTML = "Leerling";
-            option1.value = "1";
-            element5.add(option1, null);
-            var option2 = document.createElement("option");
-            option2.innerHTML = "Coach";
-            option2.value = "2";
-            element5.add(option2, null);
-                        var option3 = document.createElement("option");
-            option3.innerHTML = "Administrator";
-            option3.value = "3";
-            element5.add(option3, null);
-            cell5.appendChild(element5);
-
-        }
-
-        function deleteRow(tableID) {
-            try {
-            var table = document.getElementById(tableID);
-            var rowCount = table.rows.length;
-
-            for(var i=0; i<rowCount; i++) {
-                var row = table.rows[i];
-                var chkbox = row.cells[0].childNodes[0];
-                if(null !== chkbox && true === chkbox.checked) {
-                  table.deleteRow(i);
-                    rowCount--;
-                    i--;
-                }
-
-
-            }
-            }catch(e) {
-                alert(e);
-            }
-        }
-
-    </SCRIPT>-->
-
-<form method="post" lang="nl" name="form1" id="ticketform" action="#">    
+<form method="post" name="form1" id="ticketform" action="#">
     <h2>Gebruiker Toevoegen</h2>
     <nav>
         <div id="">

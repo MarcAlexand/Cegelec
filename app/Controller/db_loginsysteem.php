@@ -5,7 +5,7 @@
  * @access public
  * @author firstname and lastname of author, <author@example.org>
  */
-class DbLoginsysteem
+class DbLoginsysteem extends database
 {
     // --- ASSOCIATIONS ---
 
@@ -45,21 +45,35 @@ class DbLoginsysteem
     }
 
     /**
-     * Short description of method gebruikerCheck
+     * Check if account credentials are correct.
      *
-     * @access public
-     * @author firstname and lastname of author, <author@example.org>
-     * @return mixed
+     * @param $username
+     * @param $wachtwoord
+     * @return bool|int
      */
-    public function authenticate($gebruiker_user, $gebruiker_wachtwoord) {
+    public function authenticate($username, $wachtwoord) {
 		// Selecteer het account waarbij de gebruikersnaam en wachtwoord overeen komen met ingevulde gegevens
-		$sql = "SELECT * FROM gebruiker WHERE gebruiker_user = '$gebruiker_user' AND gebruiker_wachtwoord = '$gebruiker_wachtwoord' LIMIT 1";
-		$result=$this->db->dbquery($sql);
-		//Kijk of er resultaten zijn
-		$count=  mysqli_num_rows($result);
-		return $count;
+		$sql = "SELECT * FROM gebruiker WHERE gebruiker_user = '$username' LIMIT 1";
+
+        $result = $this->db->dbQuery($sql);
+        if (!$this->db->dbquery($sql)) {
+            return false;
+        }
+        if (!($result = $this->db->dbFetchAll())) {
+            // set error.
+            echo TXT_NO_DATA;
+            return FALSE;
+        }
+        var_dump($result);
+
 	}
 
-} /* end of class db_loginsysteem */
+    public function verifyPassword($wachtwoord, $hash)
+    {
+        if(password_verify($wachtwoord, $hash)) {
+            return true;
+        }
+        return false;
+    }
 
-?>
+}

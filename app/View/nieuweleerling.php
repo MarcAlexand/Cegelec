@@ -1,5 +1,4 @@
 <?php
-include_once FILE_M_GEBRUIKER;
 $gebruiker = new Gebruiker();
 $gebruiker_array = $gebruiker->CreateLeerling();
 

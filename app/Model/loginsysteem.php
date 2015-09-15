@@ -68,8 +68,9 @@ class Login
     public function __construct()
     {
         // Nieuw object van Gebruiker
-		$this->user = new Gebruiker(new DbGebruiker());
-                $this->dbuser = new DbGebruiker();
+		$this->dbuser = new DbGebruiker();
+		$this->user = new Gebruiker($this->dbuser);
+
 		// Nieuw object van DbLoginSysteem
 		$this->db = new DbLoginsysteem;
 		// Nieuw object van Session
@@ -148,7 +149,7 @@ class Login
 	* get de $gebruiker_user attribuut
 	*/
         
-	public function getGebruikerUser() {
+	public function getUsername() {
 		return $this->gebruiker_user;
 	}
 
@@ -157,7 +158,7 @@ class Login
 	*/
         
 	public function setGebruikerWachtwoord($gebruiker_wachtwoord) {
-		$this->gebruiker_wachtwoord = md5($gebruiker_wachtwoord);
+		$this->gebruiker_wachtwoord = $gebruiker_wachtwoord;
 	}
 
 	/*

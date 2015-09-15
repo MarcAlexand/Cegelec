@@ -107,7 +107,7 @@ class Session {
      * get gebruiker_user
      */
 
-    public function getGebruikerUser() {
+    public function getUsername() {
         return $this->gebruiker_user;
     }
 

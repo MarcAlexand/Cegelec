@@ -350,6 +350,4 @@ class DbCursusblok
         // section -64--88-11-18--47a40d06:14be55cded8:-8000:0000000000000B51 end
     }
 
-} /* end of class db_cursusblok */
-
-?>
+}

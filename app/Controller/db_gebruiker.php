@@ -300,7 +300,7 @@ class DbGebruiker extends database {
      */
     public function setGebruikerGeboortDatum($gebruiker) {
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DC4 begin
-        $this->gebruiker_geboortedatum = $gebruiker;
+        $this->gebruiker_geboorteDatum = $gebruiker;
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DC4 end
     }
 
@@ -513,13 +513,13 @@ class DbGebruiker extends database {
     }
 
     /**
-     * Short description of method getGebruikerUser
+     * Short description of method getUsername
      *
      * @access public
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getGebruikerUser() {
+    public function getUsername() {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008C3 begin
         return $this->gebruiker_user;
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008C3 end
@@ -812,18 +812,18 @@ class DbGebruiker extends database {
         }
         
         foreach ($result as $idx => $row){
-            $gebruiker =  new Gebruiker();
-            $gebruiker->setGebruikerUser($row['gebruiker_user']);
-            $gebruiker->setGebruikerEmail($row['gebruiker_email']);
-            $gebruiker->setGebruikerVoornaam($row['gebruiker_voornaam']);
-            $gebruiker->setGebruikerTussenvoegsel($row['gebruiker_tussenvoegsel']);
-            $gebruiker->setGebruikerAchternaam($row['gebruiker_achternaam']);
-            $gebruiker->setGebruikerGeboorteDatum($row['gebruiker_geboorteDatum']);
-            $gebruiker->setGebruikerAdres($row['gebruiker_adres']);
-            $gebruiker->setGebruikerWoonplaats($row['gebruiker_woonplaats']);
-            $gebruiker->setGebruikerTelefoonPrive($row['gebruiker_telefoonPrive']);
-            $gebruiker->setGebruikerTelefoonWerk($row['gebruiker_telefoonWerk']);
-            $gebruiker->setGebruikerInDienst($row['gebruiker_inDienst']);
+            $gebruiker =  new Gebruiker(new DbGebruiker());
+            $gebruiker->setUsername($row['gebruiker_user']);
+            $gebruiker->setEmail($row['gebruiker_email']);
+            $gebruiker->setVoornaam($row['gebruiker_voornaam']);
+            $gebruiker->setTussenvoegsel($row['gebruiker_tussenvoegsel']);
+            $gebruiker->setAchternaam($row['gebruiker_achternaam']);
+            $gebruiker->setGeboorteDatum($row['gebruiker_geboorteDatum']);
+            $gebruiker->setAdres($row['gebruiker_adres']);
+            $gebruiker->setWoonplaats($row['gebruiker_woonplaats']);
+            $gebruiker->setTelefoonPrive($row['gebruiker_telefoonPrive']);
+            $gebruiker->setTelefoonWerk($row['gebruiker_telefoonWerk']);
+            $gebruiker->setDienst($row['gebruiker_inDienst']);
         }
 
         
@@ -868,24 +868,24 @@ class DbGebruiker extends database {
  
         
         foreach($result as $idx => $row){
-            $gebruiker_object[$row['gebruiker_id']] = new Gebruiker();
-            
+            $gebruiker_object[$row['gebruiker_id']] = new Gebruiker(new DbGebruiker());
+
             $gebruiker_object[$row['gebruiker_id']]->setGebruikerId($this->dbOutString($row['gebruiker_id']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerUser($this->dbOutString($row['gebruiker_user']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerVoornaam($this->dbOutString($row['gebruiker_voornaam']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerTussenvoegsel($this->dbOutString($row['gebruiker_tussenvoegsel']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerAchternaam($this->dbOutString($row['gebruiker_achternaam']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerEmail($this->dbOutString($row['gebruiker_email']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerGeboorteDatum($this->dbOutString($row['gebruiker_geboorteDatum']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerAdres($this->dbOutString($row['gebruiker_adres']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerWoonplaats($this->dbOutString($row['gebruiker_woonplaats']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerTelefoonPrive($this->dbOutString($row['gebruiker_telefoonPrive']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerTelefoonWerk($this->dbOutString($row['gebruiker_telefoonWerk']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerInDienst($this->dbOutString($row['gebruiker_inDienst']));
-            $gebruiker_object[$row['gebruiker_id']]->setGebruikerActief((int)$row['gebruiker_actief']);
-            
-           
-            
+            $gebruiker_object[$row['gebruiker_id']]->setUsername($this->dbOutString($row['gebruiker_user']));
+            $gebruiker_object[$row['gebruiker_id']]->setVoornaam($this->dbOutString($row['gebruiker_voornaam']));
+            $gebruiker_object[$row['gebruiker_id']]->setTussenvoegsel($this->dbOutString($row['gebruiker_tussenvoegsel']));
+            $gebruiker_object[$row['gebruiker_id']]->setAchternaam($this->dbOutString($row['gebruiker_achternaam']));
+            $gebruiker_object[$row['gebruiker_id']]->setEmail($this->dbOutString($row['gebruiker_email']));
+            $gebruiker_object[$row['gebruiker_id']]->setGeboorteDatum($this->dbOutString($row['gebruiker_geboorteDatum']));
+            $gebruiker_object[$row['gebruiker_id']]->setAdres($this->dbOutString($row['gebruiker_adres']));
+            $gebruiker_object[$row['gebruiker_id']]->setWoonplaats($this->dbOutString($row['gebruiker_woonplaats']));
+            $gebruiker_object[$row['gebruiker_id']]->setTelefoonPrive($this->dbOutString($row['gebruiker_telefoonPrive']));
+            $gebruiker_object[$row['gebruiker_id']]->setTelefoonWerk($this->dbOutString($row['gebruiker_telefoonWerk']));
+            $gebruiker_object[$row['gebruiker_id']]->setDienst($this->dbOutString($row['gebruiker_inDienst']));
+            $gebruiker_object[$row['gebruiker_id']]->setActief((int)$row['gebruiker_actief']);
+
+
+
         }
         
 
@@ -948,47 +948,19 @@ class DbGebruiker extends database {
      * Short description of method createGebruikerDb
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
-     * @param  gebruiker_user
-     * @param  gebruiker_wachtwoord
-     * @param  gebruiker_voornaam
-     * @param  gebruiker_tussenvoegsel
-     * @param  gebruiker_achternaam
-     * @param  gebruiker_email
-     * @param  rechten
-     * @param  sessie_id
+     * @author ?
+     * @author Donny van Walsem <donnehvw@gmail.com> Query gefixt
      * @return mixed
      */
-    public function createGebruikerDb($gebruiker) {
-        // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008BB begin
-       
-        
-        
-        if( !is_object($gebruiker) && get_class( $gebruiker)){
-            // Oops
-        }
-        
-        // Get database representable rechten structure
-        $rechten = $this->dbInString( serialize( $gebruiker->getRechten() ));
-        
-        //*
-        echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-        echo '<pre>';
-        var_dump($gebruiker);
-        var_dump($rechten);
-        echo '</pre>';
-        echo $rechten;
-        //*/
-        
-        //INSERT INTO `cegelec`.`gebruiker` ( `gebruiker_user`, `gebruiker_wachtwoord`, `gebruiker_voornaam`, `gebruiker_tussenvoegsel`, `gebruiker_achternaam`, `gebruiker_email`, `gebruiker_geboorteDatum`, `gebruiker_adres`, `gebruiker_woonplaats`, `gebruiker_telefoonPrive`, `gebruiker_telefoonWerk`, `gebruiker_inDienst`, `gebruiker_functie`, `gebruiker_status`, `gebruiker_bijzonder`, `rechten`, `sessie_id`, `gebruiker_actief`, `gebruiker_coachID`, `gebruiker_projectleiderID`, `gebruiker_docentID`) VALUES ('cqwertyuiop', 'wefefewf', 'wdqdqd', 'y', 'qwdwdwqq', 'qqw', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, NULL, NULL, NULL);
-        
+    public function createGebruikerDb($myinputs, $wachtwoord) {
+
         $query = "INSERT INTO  `cegelec`.`gebruiker` (
-                `gebruiker_user` ,
+                `gebruiker_user`,
                 `gebruiker_wachtwoord` ,
-                `gebruiker_voornaam` ,
+                `gebruiker_voornaam`,
                 `gebruiker_tussenvoegsel`,
                 `gebruiker_achternaam` ,
-                `gebruiker_email` ,
+                `gebruiker_email`,
                 `gebruiker_geboorteDatum`,
                 `gebruiker_adres`,
                 `gebruiker_woonplaats`,
@@ -996,52 +968,42 @@ class DbGebruiker extends database {
                 `gebruiker_telefoonWerk`,
                 `gebruiker_inDienst`,
                 `gebruiker_actief`
-                )
-                  VALUES (".
-                "'" . $this->dbInString($gebruiker->getGebruikerUser() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerWachtwoord() ) . "',    
-                '" . $this->dbInString($gebruiker->getGebruikerVoornaam() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerTussenvoegsel() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerAchternaam() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerEmail() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerGeboorteDatum() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerAdres() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerWoonplaats() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerTelefoonPrive() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerTelefoonWerk() ) . "',
-                '" . $this->dbInString($gebruiker->getGebruikerInDienst() ) . "',
-                '" . $gebruiker->getGebruikerActief()  . "'
-                )";
-        
-     //* 
-        echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-        echo '<pre>';
-        var_dump($gebruiker);
-        echo($query);
-        echo '</pre>';
-        //*/
-        
-        
-        
-        
-        if (!$this->dbquery($query)) {
-            return false;
-        } else {
-            $this->gebruiker_user = $gebruiker->getGebruikerUser();
-            $this->gebruiker_wachtwoord = $gebruiker->getGebruikerWachtwoord();
-            $this->gebruiker_voornaam = $gebruiker->getGebruikerVoornaam();
-            $this->gebruiker_tussenvoegsel = $gebruiker->getGebruikerTussenvoegsel();
-            $this->gebruiker_achternaam = $gebruiker->getGebruikerAchternaam();
-            $this->gebruiker_email = $gebruiker->getGebruikerEmail();
-            $this->gebruiker_geboorteDatum = $gebruiker->getGebruikerGeboorteDatum();
-            $this->gebruiker_adres = $gebruiker->getGebruikerAdres();
-            $this->gebruiker_woonplaats = $gebruiker->getGebruikerWoonplaats();
-            $this->gebruiker_telefoonPrive = $gebruiker->getGebruikerTelefoonPrive();
-            $this->gebruiker_telefoonWerk = $gebruiker->getGebruikerTelefoonWerk();
-            $this->gebruiker_inDienst = $gebruiker->getGebruikerInDienst();
-            $this->gebruiker_actief = $gebruiker->getGebruikerActief();
-            $this->dbOutString($gebruiker->setGebruikerId($this->dbLastInsertedId()));
-            //$this->setGebruikerId($this->dbGetLastInsertedId() );
+                ) VALUES ('" . $myinputs['gebruiker_user'] . "',
+                          '" . $wachtwoord . "',
+                          '" . $myinputs['gebruiker_voornaam'] . "',
+                          '" . $myinputs['gebruiker_tussenvoegsel'] . "',
+                          '" . $myinputs['gebruiker_achternaam'] . "',
+                          '" . $myinputs['gebruiker_email'] . "',
+                          '" . $myinputs['gebruiker_geboorteDatum'] . "',
+                          '" . $myinputs['gebruiker_adres'] . "',
+                          '" . $myinputs['gebruiker_woonplaats'] . "',
+                          '" . $myinputs['gebruiker_telefoonPrive'] . "',
+                          '" . $myinputs['gebruiker_telefoonWerk'] . "',
+                          '" . $myinputs['gebruiker_inDienst'] . "',
+                          '" . $myinputs['gebruiker_actief'] . "'
+                          )";
+
+            echo $query;
+            $result = $this->dbquery($query);
+            var_dump($result);
+//        if (!$this->dbquery($query)) {
+//            return false;
+//        } else {
+//            $this->gebruiker_user = $gebruiker->getUsername();
+//            $this->gebruiker_wachtwoord = $gebruiker->getGebruikerWachtwoord();
+//            $this->gebruiker_voornaam = $gebruiker->getGebruikerVoornaam();
+//            $this->gebruiker_tussenvoegsel = $gebruiker->getGebruikerTussenvoegsel();
+//            $this->gebruiker_achternaam = $gebruiker->getGebruikerAchternaam();
+//            $this->gebruiker_email = $gebruiker->getGebruikerEmail();
+//            $this->gebruiker_geboorteDatum = $gebruiker->getGebruikerGeboorteDatum();
+//            $this->gebruiker_adres = $gebruiker->getGebruikerAdres();
+//            $this->gebruiker_woonplaats = $gebruiker->getGebruikerWoonplaats();
+//            $this->gebruiker_telefoonPrive = $gebruiker->getGebruikerTelefoonPrive();
+//            $this->gebruiker_telefoonWerk = $gebruiker->getGebruikerTelefoonWerk();
+//            $this->gebruiker_inDienst = $gebruiker->getGebruikerInDienst();
+//            $this->gebruiker_actief = $gebruiker->getGebruikerActief();
+//            $this->dbOutString($gebruiker->setGebruikerId($this->dbLastInsertedId()));
+//            //$this->setGebruikerId($this->dbGetLastInsertedId() );
             
         
             
@@ -1050,7 +1012,7 @@ class DbGebruiker extends database {
         
         
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008BB end
-    }
+
 
     /**
      * Short description of method updateGebruikerDb
@@ -1064,29 +1026,30 @@ class DbGebruiker extends database {
      * @param  gebruiker_id
      * @return mixed
      */
-    public function updateGebruikerDb($myinputs) {
+    public function updateGebruikerDb($myinputs, $id) {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008BD begin
         // serialize rights
         //$rechten = serialize($rechten);
-        // Query updates the item using inserted parameters. 
-        $query = "UPDATE `gebruiker` 
-                    SET `gebruiker_user` = '" . $this->dbInString($myinputs->getGebruikerUser()) . "', 
-                        `gebruiker_email` = '" . $this->dbInString($myinputs->getGebruikerEmail()) . "',  
-                        `gebruiker_voornaam` = '" . $this->dbInString($myinputs->getGebruikerVoornaam()) . "', 
-                        `gebruiker_tussenvoegsel` = '" . $this->dbInString($myinputs->getGebruikerTussenvoegsel()) . "', 
-                        `gebruiker_achternaam` = '" . $this->dbInString($myinputs->getGebruikerAchternaam()) . "',    
-                        `gebruiker_geboorteDatum` = '" . $this->dbInString($myinputs->getGebruikerGeboorteDatum()) . "',         
-                        `gebruiker_adres` = '" . $this->dbInString($myinputs->getGebruikerAdres()) . "', 
-                        `gebruiker_woonplaats` = '" . $this->dbInString($myinputs->getGebruikerWoonplaats()) . "',     
-                        `gebruiker_telefoonPrive` = '" . $this->dbInString($myinputs->getGebruikerTelefoonPrive()) . "',   
-                        `gebruiker_telefoonWerk` = '" . $this->dbInString($myinputs->getGebruikerTelefoonWerk()) . "',    
-                        `gebruiker_inDienst` = '" . $this->dbInString($myinputs->getGebruikerInDienst()) . "',
-                        `gebruiker_actief` = '" . $myinputs->getGebruikerActief() . "'
-WHERE   
-                        `gebruiker_id` = '" . $this->dbInString($myinputs->getGebruikerId()) . "'";
+        // Query updates the item using inserted parameters.
+        var_dump($myinputs);
+        $query = "UPDATE `gebruiker`
+                    SET `gebruiker_user` = '" . $myinputs['gebruiker_username'] . "',
+                        `gebruiker_email` = '" . $myinputs['gebruiker_email'] . "',
+                        `gebruiker_voornaam` = '" . $myinputs['gebruiker_voornaam'] . "',
+                        `gebruiker_tussenvoegsel` = '" . $myinputs['gebruiker_tussenvoegsel'] . "',
+                        `gebruiker_achternaam` = '" . $myinputs['gebruiker_achternaam'] . "',
+                        `gebruiker_geboorteDatum` = '" . $myinputs['gebruiker_geboorteDatum'] . "',
+                        `gebruiker_adres` = '" . $myinputs['gebruiker_adres'] . "',
+                        `gebruiker_woonplaats` = '" . $myinputs['gebruiker_woonplaats'] . "',
+                        `gebruiker_telefoonPrive` = '" . $myinputs['gebruiker_telefoonPrive'] . "',
+                        `gebruiker_telefoonWerk` = '" . $myinputs['gebruiker_telefoonWerk'] . "',
+                        `gebruiker_inDienst` = '" . $myinputs['gebruiker_inDienst'] . "',
+                        `gebruiker_actief` = '" . $myinputs['gebruiker_actief'] . "'
+WHERE
+                        `gebruiker_id` = '" . $id    . "'";
 
 
-      
+
         if (!$this->dbquery($query)) {
             return false;
         } else {

@@ -1,6 +1,4 @@
-
 <?php
-
 if (isset($_GET['subpage'])) {
     switch ($_GET['subpage']) {
         case "nieuweleerling": include 'nieuweleerling.php';

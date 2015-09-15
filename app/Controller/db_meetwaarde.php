@@ -333,6 +333,4 @@ class DbMeetwaarde extends Database
         // section 10-0-3-42--48fed505:14dc2ee5671:-8000:0000000000000E3A end
     }
 
-} /* end of class db_meetwaarde */
-
-?>
+}

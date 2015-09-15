@@ -245,10 +245,9 @@ class Cursusblok
     public function getCursusblokList()
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C60 begin
-        return $this->getCursusblokListDb();
+        return true;
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000C60 end
     }
-
     /**
      * Short description of method getCursusblokById
      *
