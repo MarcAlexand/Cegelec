@@ -55,25 +55,11 @@ class DbLoginsysteem extends database
 		// Selecteer het account waarbij de gebruikersnaam en wachtwoord overeen komen met ingevulde gegevens
 		$sql = "SELECT * FROM gebruiker WHERE gebruiker_user = '$username' LIMIT 1";
 
-        $result = $this->db->dbQuery($sql);
-        if (!$this->db->dbquery($sql)) {
-            return false;
-        }
-        if (!($result = $this->db->dbFetchAll())) {
-            // set error.
-            echo TXT_NO_DATA;
-            return FALSE;
-        }
-        var_dump($result);
 
+        if ($this->db->dbQuery($sql)) {
+            $result = $this->db->dbFetchAll()[0];
+        }
+        return password_verify($wachtwoord, $result['gebruiker_wachtwoord']);
 	}
-
-    public function verifyPassword($wachtwoord, $hash)
-    {
-        if(password_verify($wachtwoord, $hash)) {
-            return true;
-        }
-        return false;
-    }
 
 }
