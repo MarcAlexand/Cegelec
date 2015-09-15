@@ -186,15 +186,12 @@ class Gebruiker
      * Short description of method __construct
      *
      * @access public
-     * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
     public function __construct(DbGebruiker $db = null)
     {
-        // section -84-19-69-71--6add4d69:14bee37f7a2:-8000:0000000000000C12 begin
         $this->dbGebruiker = $db;
         $this->rechten = new RechtBitfield();
-        // section -84-19-69-71--6add4d69:14bee37f7a2:-8000:0000000000000C12 end
     }
 
     /**
@@ -1142,9 +1139,6 @@ class Gebruiker
      */
     public function saveGebruiker($myinputs)
     {
-        // section -84-19-89-20--6da232ce:14dc276eb9c:-8000:0000000000000DA6 begin
-        //set gebruiker atributen $ valideer ze
-        //test
         try{
             if( empty($this->gebruiker_wachtwoord) ){
                 $this->setGebruikerWachtwoord($this->randomPassword());
@@ -1187,12 +1181,6 @@ class Gebruiker
         }catch(Exception $e){
             throw new Exception( 'Message: '. $e->getMessage());
         }
-            
-            
-        
-         //get id
-       
-        // section -84-19-89-20--6da232ce:14dc276eb9c:-8000:0000000000000DA6 end
     }
 
     /**
@@ -1220,6 +1208,4 @@ class Gebruiker
         // section -84-19-87-90-4ea08e7:14e1f66384f:-8000:0000000000000F26 end
     }
 
-} /* end of class Gebruiker */
-
-?>
+}
