@@ -1,1 +1,1 @@
-# Cegelec
+# Schoolproject
