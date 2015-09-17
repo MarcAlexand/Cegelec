@@ -1,5 +1,5 @@
 <?php
-require "../vendor/autoload.php";
+//require "../vendor/autoload.php";
 ob_start();
 include_once '../app/defs/constants.php';
 $rechten = new RechtConstants();
