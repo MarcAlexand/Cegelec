@@ -13,6 +13,7 @@ define("NEVER_LOGGED_IN", 2);
   $countArray = count($recht_array);
 
   / */
+
 $error_array = array();
 $myinputs = array();
 
@@ -179,7 +180,7 @@ if (isset($_POST) && !empty($_POST)) {
                 <input lang="nl" type="date" name="gebruiker_geboorteDatum" id="gebdatum" title="Voer hier een geboorte datum in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_geboorteDatum' )?>">
             </td>
             <td>
-                <input placeholder="Adres 23" type="text" name="gebruiker_adres" id="adres" title="Voer hier een adres in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_adres' )?>">
+                <input placeholder="Adres" type="text" name="gebruiker_adres" id="adres" title="Voer hier een adres in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_adres' )?>">
             </td>
             <td>
                 <input placeholder="Woonplaats" type="text" name="gebruiker_woonplaats" id="woonplaats" title="Voer hier een woonplaats in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_woonplaats' )?>">
@@ -220,6 +221,15 @@ if (isset($_POST) && !empty($_POST)) {
     <?php if (array_key_exists('generic', $error_array)){
         echo $error_array['generic'];
     } ?>
+    <?php
+    
+    /*
+    echo __FILE__.__LINE__.__FUNCTION__.'<br />';
+    echo '<pre>';
+    var_dump($mail);
+    echo '</pre>';
+    //*/
+    ?>
     <!--    <INPUT type="button" value="Add Row" onClick="addRow('dataTable')" />-->
     <input type="submit" class="knopje" name="Verzenden" value="Aanmaken" />
 </form>

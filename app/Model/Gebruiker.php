@@ -17,6 +17,7 @@ class Gebruiker
     private $dienst;
     private $sessie_id;
     private $actief;
+    private $hash;
 
 
     private $db;
@@ -299,7 +300,10 @@ class Gebruiker
     {
         $this->rechten = $rechten;
     }
-
+    
+    public function setHash($hash){
+        $this->hash = $hash;
+    }
     /**
      * Return user matching a specific id.
      *
@@ -328,7 +332,9 @@ class Gebruiker
         return $this->db->getGebruikerListDb();
     }
 
-
+    public function getHash(){
+        return $this->hash;
+    }
     public function deleteGebruiker($id) {
         return $this->dbGebruiker->deleteGebruikerDb($id);
     }
@@ -344,10 +350,7 @@ class Gebruiker
     public function updateGebruiker($input, $id) {
         return $this->db->updateGebruikerDb($input, $id);
     }
-
-    public function save($input) {
-        return $this->db->createGebruikerDb($input, $this->randomPassword());
-    }
+   
 
     public function randomPassword() {
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
@@ -357,12 +360,39 @@ class Gebruiker
             $n = rand(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
-        $wachtwoord = implode($pass);
+        $wachtwoord = $this->wachtwoord = implode($pass);
         $file = fopen("test.txt", "w");
         fwrite($file, $wachtwoord);
         fclose($file);
-
-        return password_hash($wachtwoord, PASSWORD_DEFAULT); //turn the array into a string
+        
+        $this->setHash(password_hash($wachtwoord, PASSWORD_DEFAULT)); //turn the array into a string
+        return true;
+    }
+    
+    
+    public function mailPassword($username, $wachtwoord, $email){
+       
+        $mail = new PHPMailer();
+        
+        $mail->isSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->Host = 'tls://smtp.gmail.com:587';
+        $mail->SMTPAuth = true;
+        $mail->Username = "tjerkbieze@gmail.com";
+        $mail->Password = "ikillbla";
+        $mail->Subject = 'Actemium applicatie - Wachtwoord';
+        $mail->Body    = "Dit is uw gebruikersnaam: ".$username." "."wachtwoord: ".$wachtwoord;
+        $mail->addReplyTo('tbieze@student.scalda.nl', 'Stuur een bericht naar dit emailadres.');
+        
+        
+        $mail->addAddress($email, 'Tjerk Bieze');
+         
+        if (!$mail->send()) {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+        } else {
+            echo "Message sent!";
+}
+       
     }
 //    public function setParameters($parameters) {
 //        $expected = ['voornaam', 'achternaam'];
@@ -372,4 +402,15 @@ class Gebruiker
 //            };
 //        }
 //    }
+    public function save($input) {
+        // Eerst gebruiker aanmaken
+        
+        $this->setUsername($input['gebruiker_user']);
+        $this->setEmail($input['gebruiker_email']);
+        $this->randomPassword();
+        $this->mailPassword($this->username,$this->wachtwoord, $this->email);
+        // Als aanmaken gelukt -> wachtwoord mail sturen
+        return $this->db->createGebruikerDb($input, $this->getHash());
+    }
+    
 }

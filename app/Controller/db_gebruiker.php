@@ -954,6 +954,7 @@ class DbGebruiker extends database {
      */
     public function createGebruikerDb($myinputs, $wachtwoord) {
 
+        
         $query = "INSERT INTO  `cegelec`.`gebruiker` (
                 `gebruiker_user`,
                 `gebruiker_wachtwoord` ,
@@ -969,7 +970,7 @@ class DbGebruiker extends database {
                 `gebruiker_inDienst`,
                 `gebruiker_actief`
                 ) VALUES ('" . $myinputs['gebruiker_user'] . "',
-                          '" . $wachtwoord . "',
+                          '" . $this->dbInString($wachtwoord) . "',
                           '" . $myinputs['gebruiker_voornaam'] . "',
                           '" . $myinputs['gebruiker_tussenvoegsel'] . "',
                           '" . $myinputs['gebruiker_achternaam'] . "',
@@ -983,9 +984,10 @@ class DbGebruiker extends database {
                           '" . $myinputs['gebruiker_actief'] . "'
                           )";
 
-            echo $query;
+            
             $result = $this->dbquery($query);
-            var_dump($result);
+         
+            echo $query;
 //        if (!$this->dbquery($query)) {
 //            return false;
 //        } else {
