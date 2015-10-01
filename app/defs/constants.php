@@ -15,9 +15,9 @@
  */
 set_include_path( get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] );
 
-//echo get_include_path();
+// echo get_include_path();
 
-define("WWW_ROOT",                          "/cegelec/");
+define("WWW_ROOT",                          "");
  define("HOME",                             WWW_ROOT."public/index.php");
  define("DIR_MODEL",                        WWW_ROOT."app/Model/");
  define("DIR_VIEW",                         WWW_ROOT."app/View/");
@@ -63,14 +63,10 @@ define("WWW_ROOT",                          "/cegelec/");
  define("URL_WEERGEVEN_USER_BEHEER",        "Gebruikers");
  define("URL_USER_BEHEER",                  "?page=gebruikers");
  
-    // Leerling
+ // Leerling
  define("URL_WEERGEVEN_OVERZICHT_LEERLING", "Leerling");
  define("URL_LEERLING_BEHEER",              "?page=leerling");
-
  define("FILE_V_LEERLING",                  DIR_VIEW."leerlingoverzicht.php");
-
-
-
  
  // OPLEIDING
  define("FILE_M_OPLEIDING",                 DIR_MODEL."opleiding.php");
@@ -89,6 +85,8 @@ define("WWW_ROOT",                          "/cegelec/");
  define("FILE_M_LOCAITE",                   DIR_MODEL."locatie.php");
  define("FILE_V_LOCATIE",                   DIR_VIEW."locatie.php");
  define("FILE_DB_LOCATIE",                  DIR_CONTROLLER."db_locatie.php");
+ define("URL_WEERGEVEN_OVERZICHT_LOCATIE",	"Locatie");
+ define("URL_LOCATIE_BEHEER", 				"?page=locatie");
  
 
 // MEETWAARDE
