@@ -18,8 +18,6 @@
                 break;
             case "nieuwelocatie": include 'nieuwelocatie.php';
                 break;
-            case "gebruikerview": include 'userview.php';
-                break;
         }
     } else {
         ?>
