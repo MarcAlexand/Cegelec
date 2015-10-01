@@ -2,7 +2,7 @@
 
 /**
  * @version 1.3
- * @author Marc de Boer
+ * @author Marc de Boer 
  * 
  * deze file doet:
  * - verbinding maken met DB
