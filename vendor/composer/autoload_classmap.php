@@ -24,6 +24,7 @@ return array(
     'Gebruikertemp' => $baseDir . '/app/Model/gebruikertemp.php',
     'Locatie' => $baseDir . '/app/Model/locatie.php',
     'Login' => $baseDir . '/app/Model/loginsysteem.php',
+    'Mailer' => $baseDir . '/app/Model/mailer.php',
     'Meetwaarde' => $baseDir . '/app/Model/meetwaarde.php',
     'Opleiding' => $baseDir . '/app/Model/opleiding.php',
     'PHPMailer' => $vendorDir . '/phpmailer/phpmailer/class.phpmailer.php',

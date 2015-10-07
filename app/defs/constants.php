@@ -110,7 +110,7 @@ define("WWW_ROOT",                          "/cegelec/");
  define("TEXT_FORM_FIELD_ERROR_TELEFOONWERK",       "Werk nummer is niet geldig!");
  define("TEXT_FORM_FIELD_ERROR_INDIENST",       "In dienst datum is niet geldig!");
  define("TEXT_FORM_FIELD_ERROR_RECHT",       "Recht is niet geldig!");
-  
+ define("TEXT_FORM_FIELD_ERROR_EMAIL", "E-mail is niet ingevuld."); 
    
  
  define("TEXT_ERROR_MANDATORY_FIELD_USERNAME_EMPTY", "Verplichte username is leeg.");
@@ -126,5 +126,5 @@ define("WWW_ROOT",                          "/cegelec/");
  define("TEXT_ERROR_MANDATORY_FIELD_INDIENST_EMPTY", "Verplichte in dienst datum is leeg.");
  define("TEXT_ERROR_MANDATORY_FIELD_RECHT_EMPTY", "Verplichte recht is niet goed ingevuld.");
  define("TEXT_ERROR_MANDATORY_FIELD_ACTIEF_EMPTY", "Verplichte actief is niet goed ingevuld.");
- 
-  define("TEXT_ERROR_MANDATORY_FIELD_ADRES_INVALID", "Verplichte adres is vekeerd ingevult, vul een straat en huisnummer in.");
+
+ define("TEXT_ERROR_MANDATORY_FIELD_ADRES_INVALID", "Verplichte adres is vekeerd ingevult, vul een straat en huisnummer in.");

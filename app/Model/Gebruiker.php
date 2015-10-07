@@ -1,6 +1,6 @@
 <?php
 
-class Gebruiker
+class Gebruiker 
 {
     private $gebruiker_id;
     private $username;
@@ -9,6 +9,7 @@ class Gebruiker
     private $tussenvoegsel;
     private $achternaam;
     private $email;
+    private $objectmail;
     private $geboorte_datum;
     private $adres;
     private $woonplaats;
@@ -27,6 +28,7 @@ class Gebruiker
     public function __construct(DbGebruiker $db) {
         $this->db = $db;
         $this->rechten = new RechtBitfield;
+        $this->objectmail = new Mailer;
     }
 
     /**
@@ -75,6 +77,9 @@ class Gebruiker
     public function setWachtwoord($wachtwoord)
     {
         $this->wachtwoord = $wachtwoord;
+        
+        
+        
     }
 
     /**
@@ -350,9 +355,10 @@ class Gebruiker
     public function updateGebruiker($input, $id) {
         return $this->db->updateGebruikerDb($input, $id);
     }
-   
-
-    public function randomPassword() {
+    
+    public function randomPassword()
+    {
+        // section -84-19-76-71--c917496:15022315175:-8000:0000000000001056 begin
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
         $pass = array(); //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
@@ -360,40 +366,20 @@ class Gebruiker
             $n = rand(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
-        $wachtwoord = $this->wachtwoord = implode($pass);
+        $wachtwoord = $this->setWachtwoord(implode($pass));
         $file = fopen("test.txt", "w");
         fwrite($file, $wachtwoord);
         fclose($file);
         
         $this->setHash(password_hash($wachtwoord, PASSWORD_DEFAULT)); //turn the array into a string
         return true;
+        // section -84-19-76-71--c917496:15022315175:-8000:0000000000001056 end
     }
     
     
-    public function mailPassword($username, $wachtwoord, $email){
-       
-        $mail = new PHPMailer();
-        
-        $mail->isSMTP();
-        $mail->SMTPDebug = 0;
-        $mail->Host = 'tls://smtp.gmail.com:587';
-        $mail->SMTPAuth = true;
-        $mail->Username = "tjerkbieze@gmail.com";
-        $mail->Password = "ikillbla";
-        $mail->Subject = 'Actemium applicatie - Wachtwoord';
-        $mail->Body    = "Dit is uw gebruikersnaam: ".$username." "."wachtwoord: ".$wachtwoord;
-        $mail->addReplyTo('tbieze@student.scalda.nl', 'Stuur een bericht naar dit emailadres.');
         
         
-        $mail->addAddress($email, 'Tjerk Bieze');
-         
-        if (!$mail->send()) {
-            echo "Mailer Error: " . $mail->ErrorInfo;
-        } else {
-            echo "Message sent!";
-}
-       
-    }
+   
 //    public function setParameters($parameters) {
 //        $expected = ['voornaam', 'achternaam'];
 //        foreach( $parameters as $key => $parameter) {
@@ -404,12 +390,16 @@ class Gebruiker
 //    }
     public function save($input) {
         // Eerst gebruiker aanmaken
-        
         $this->setUsername($input['gebruiker_user']);
         $this->setEmail($input['gebruiker_email']);
         $this->randomPassword();
-        $this->mailPassword($this->username,$this->wachtwoord, $this->email);
-        // Als aanmaken gelukt -> wachtwoord mail sturen
+        $this->objectmail->mailPassword($this->getUsername(), $this->getWachtwoord(), $this->getEmail());
+        
+        
+       
+
+// Als aanmaken gelukt -> wachtwoord mail sturen
+         
         return $this->db->createGebruikerDb($input, $this->getHash());
     }
     
