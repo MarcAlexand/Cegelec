@@ -22,6 +22,13 @@
                 </a>
             </div>
             <div id="dashboardbutton">
+                <a href="<?php echo URL_LOCATIE_BEHEER; ?>">
+                    <img src="img/userbeheerbutton.png">
+                    </br>
+                    <?php echo URL_WEERGEVEN_OVERZICHT_LOCATIE; ?>
+                </a>
+            </div>
+            <div id="dashboardbutton">
                 <form method="POST" id="logout" name="logout">
                     <input type="hidden"  name="logout" value="true">
                     <input type="image" src="img/uitloggenbut.png"> 

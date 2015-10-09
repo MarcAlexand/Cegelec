@@ -145,54 +145,63 @@ if (isset($_POST) && !empty($_POST)) {
 
     </nav>
     <table id="dataTable" class="formulier" border="1">
-        <thead>
-        <th>Gebruikersnaam</th>
-        <th>Voornaam</th>
-        <th>Tussenvoegsel</th>
-        <th>Achternaam</th>
-        <th>Email Adres</th>
-        <th>Geboorte Datum</th>
-        <th>Adres</th>
-        <th>Woonplaats</th>
-        <th>Telefoon Prive</th>
-        <th>Telefoon Werk</th>
-        <th>In Dienst</th>
-        <th>Rechten</th>
-        <th>Actief</th>
         <tr>
+            <td>Gebruikersnaam</td>
             <td>
                 <input  placeholder="Gebruikersnaam" lang="NL" type="text" name="gebruiker_user" id="user" title="Voer hier de gebruikersnaam in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_user')?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="Voornaam" type="text" name="gebruiker_voornaam" id="voornaam" title="Voer hier een voornaam in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_voornaam')?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="Tussenvoegsel" type="text" name="gebruiker_tussenvoegsel" id="tussenvoegsel" title="Voer hier een tussenvoegsel in." value="<?php echo getValueText($error_array,$myinputs,'gebruiker_tussenvoegsel')?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="Achternaam" type="text" name="gebruiker_achternaam" id="achternaam" title="Voer hier een achternaam in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_achternaam')?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="email@adres.com" type="mail" name="gebruiker_email" id="email" title="Voer hier een emailadres in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_email' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input lang="nl" type="date" name="gebruiker_geboorteDatum" id="gebdatum" title="Voer hier een geboorte datum in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_geboorteDatum' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="Adres 23" type="text" name="gebruiker_adres" id="adres" title="Voer hier een adres in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_adres' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="Woonplaats" type="text" name="gebruiker_woonplaats" id="woonplaats" title="Voer hier een woonplaats in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_woonplaats' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="0623451232" type="text" name="gebruiker_telefoonPrive" id="telefoonPrive" title="Voer hier een prive nummer in." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_telefoonPrive' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input placeholder="0623451232" type="text" name="gebruiker_telefoonWerk" id="telefoonWerk" title="Voer hier het telefoon nummer in van je werk" required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_telefoonWerk' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <input type="date" name="gebruiker_inDienst" id="inDienst" title="Voer hier de datum in wanneer je in dienst gaat." required value="<?php echo getValueText($error_array,$myinputs,'gebruiker_inDienst' )?>">
             </td>
+        </tr>
+        <tr>
             <td>
                 <select name="recht">
                     <?php
@@ -204,6 +213,8 @@ if (isset($_POST) && !empty($_POST)) {
                     ?>
                 </select>
             </td>
+        </tr>
+        <tr>
             <td>
                 <select name="gebruiker_actief">
                     <option value="1">

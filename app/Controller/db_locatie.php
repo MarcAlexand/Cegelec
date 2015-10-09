@@ -69,18 +69,17 @@ class DbLocatie extends Database {
      * @param type $locatie_actief
      * @return boolean
      */
-    public function addLocatieDb($locatie_naam, $locatie_actief) {
-        $rechten = serialize($rechten);
-        $query = "INSERT INTO  `cegelec`.`locatie` (
-                `locatie_id` ,
+    public function createLocatieDb($locatie_naam, $locatie_actief) {
+        $query = "INSERT INTO `locatie` (
                 `locatie_naam` ,
                 `locatie_actief`
                 )
                   VALUES (
-                NULL, 
-                '" . mysql_real_escape_string($locatie_naam) . "',   
+                '" . $locatie_naam . "',   
                 '" . $locatie_actief . "'
                 );";
+        
+        var_dump( $query );
         
         if (!$this->dbquery($query)) {
             return false;
@@ -135,9 +134,9 @@ class DbLocatie extends Database {
      * Gets de volledige database array.
      * @return boolean
      */
-    public function getGebruikerListDb() {
+    public function getLocatieListDb() {
         // Query selecteert de gebruiker aan de hand van class vars.
-        $query = "SELECT * FROM  `gebruiker` ORDER BY  `gebruiker`.`gebruiker_naam` ASC";
+        $query = "SELECT * FROM  `locatie` ORDER BY  `locatie`.`locatie_naam` ASC";
         // haalt de array op aan de hand van database's fetchDbArray function.
         // als het null is,
         if (!$this->dbquery($query)) {
@@ -148,7 +147,16 @@ class DbLocatie extends Database {
             echo TXT_NO_DATA;
             return FALSE;
         }
-        return $result;
+        
+        foreach($result as $idx => $row){
+            $locatie_object[$row['locatie_id']] = new Locatie(new DbLocatie());
+            
+            $locatie_object[$row['locatie_id']]->setLocatieId($this->dbOutString($row['locatie_id']));
+            $locatie_object[$row['locatie_id']]->setLocatieActief($this->dbOutString($row['locatie_actief']));
+            $locatie_object[$row['locatie_id']]->setLocatieNaam($this->dbOutString($row['locatie_naam']));
+        }
+        
+        return $locatie_object;
     }
 
     /**
@@ -160,26 +168,39 @@ class DbLocatie extends Database {
      * @param type $gebruiker_id
      * @return boolean
      */
-    public function updateGebruikerDb($gebruiker_naam, $rechten, $sessie_id, $gebruiker_wachtwoord, $gebruiker_id) {
+    public function updateLocatieDb($locatie_naam, $locatie_actief, $locatie_id) {
         // serialize rights
         $rechten = serialize($rechten);
         // Query updates the item using inserted parameters. 
-        $query = "UPDATE `gebruiker` 
-                    SET `gebruiker_naam` = '" . mysqli_real_escape_string($gebruiker_naam) . "',
-                        `gebruiker_recht` = '" . mysqli_real_escape_string($rechten) . "',
-                        `sessie_id` = '" . mysqli_real_escape_string($sessie_id) . "',
-                        `gebruiker_wachtwoord` = '" . mysqli_real_escape_string($gebruiker_wachtwoord) . "' WHERE
-                        `gebruiker_id` =" . mysqli_real_escape_string($gebruiker_id);
+        $query = "UPDATE `locatie` 
+                    SET `locatie_naam` = '" . mysqli_real_escape_string($locatie_naam) . "',
+                        `locatie_actief` = '" . mysqli_real_escape_string($locatie_actief) . "' WHERE
+                        `locatie_id` =" . mysqli_real_escape_string($locatie_id);
         
         if (!$this->dbquery($query)) {
             return false;
         } else {
-            $this->gebruiker_naam = $gebruiker_naam;
-            $this->rechten = $rechten;
-            $this->sessie_id = $sessie_id;
-            $this->gebruiker_wachtwoord = $gebruiker_wachtwoord;
-            $this->gebruiker_id = $gebruiker_id;
+            $this->locatie_naam = $locatie_naam;
+            $this->locatie_actief = $locatie_actief;
+            $this->locatie_id = $locatie_id;
         }
+    }
+    
+    public function getLocatieByActiefDb($locatie_naam) {
+        // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DEF begin
+        $query = "SELECT * FROM locatie WHERE (locatie_naam = '$locatie_naam')"
+                . "AND (locatie_actief= 1)";
+
+        $this->dbQuery($query);
+        $locatie = $this->dbFetchAll($query);
+
+        if ($lcoatie == NULL) {
+            return FALSE;
+        } else {
+            // als het niet null is, return the array.
+            return $locatie;
+        }
+        // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DEF end
     }
 
 }

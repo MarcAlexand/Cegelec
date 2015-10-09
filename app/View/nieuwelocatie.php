@@ -1,7 +1,6 @@
 <?php
-include_once FILE_M_LOCATIE;
 $locatie = new Locatie();
-$locatie_array = $locatie->getList();
+//$locatie_array = $locatie->getLocatieList();
 
 $countArray = count($locatie_array);
 

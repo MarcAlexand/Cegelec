@@ -1,5 +1,36 @@
 <?php
 
+error_reporting(E_ALL);
+
+/**
+ * Cegelec 2 Renewed - class.Opleiding.php
+ *
+ * $Id$
+ *
+ * This file is part of Cegelec 2 Renewed.
+ *
+ * Automatically generated on 21.04.2015, 11:35:58 with ArgoUML PHP module 
+ * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
+ *
+ * @author firstname and lastname of author, <author@example.org>
+ */
+
+if (0 > version_compare(PHP_VERSION, '5')) {
+    die('This file was generated for PHP 5');
+}
+
+/**
+ * include Cursusblok_Controle
+ *
+ * @author firstname and lastname of author, <author@example.org>
+ */
+
+/**
+ * Short description of class Opleiding
+ *
+ * @access public
+ * @author firstname and lastname of author, <author@example.org>
+ */
 class Locatie 
 {
 	// --- ASSOCIATIONS ---
@@ -15,7 +46,7 @@ class Locatie
      * @var Integer.
      */
 
-    private $locatie_id;
+    private $locatie_id = null;
     
     /**
      * Short description of attribute naam
@@ -25,7 +56,7 @@ class Locatie
      * @var String
      */
      
-    private $locatie_naam;
+    private $locatie_naam = null;
     
     /**
      * Short description of attribute actief
@@ -34,8 +65,8 @@ class Locatie
      * @var Boolean
      */
     
-    private $locatie_actief;
-    private $dbLocatie;
+    private $locatie_actief = null;
+    private $DbLocatie;
 
 
 	// --- OPERATIONS ---
@@ -49,8 +80,8 @@ class Locatie
      * @since 17-02-14
      * @version 1.0
      */
-    public function __construct(DbLocatie $db = null) {
-        $this->dbLocatie = $db;
+    public function __construct() {
+        $this->DbLocatie = new DbLocatie();
     }
 
     // --- OPERATIONS ---
@@ -64,10 +95,10 @@ class Locatie
      * @since 17-02-14
      * @version 1.0
      */
-    public function selectLocatieLijst()
+    public function getLocatieList()
     {
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BC5 begin
-        return $this->dbLocatie->getLocatielijstDb();
+        return $this->DbLocatie->getLocatieListDb();
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BC5 end
     }
     
@@ -147,18 +178,7 @@ class Locatie
     public function setLocatieNaam($locatie_naam)
     {
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCC begin
-        try {
-	        if((!is_string($$locatie_naam))){
-				throw new Exception("De naam is geen stukje tekst");
-			}
-			if(strlen($locatie_naam) < 1 ){
-				throw new Exception("De lengte van naam is te kort");
-			}
-			$this->locatie_naam = $locatie_naam;
-        } catch (Exception $exc) {
-	        echo $exc->getMessage(). '<br />';
-	        echo $exc->getTraceAsString();
-        }
+        $this->locatie_naam = $locatie_naam;
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCC end
     }
 
@@ -181,13 +201,18 @@ class Locatie
      * De save functie wordt gebruikt om een locatie op te slaan in de
      * database.
      */
-    public function addLocatie($locatie_naam) {
-        $this->dbLocatie->addLocatieDb($this->locatie_naam,$this->locatie_actief);
-
-
+    public function createLocatie() {
+         $this->DbLocatie->createLocatieDb(
+                $this->getLocatieNaam(), 
+                $this->getLocatieActief()
+                 );
+      
+         
         // Sla recht op basis van rechtgroep id (gebruiker_recht tabel)
     }
-
+    public function getLocatieByActief($locatie_actief) {
+        return $this->db->getLocatieByActief($locatie_actief);
+    }
 
 
 } /* end of class Locatie */

@@ -3,9 +3,9 @@
         <a href="?page=dashboard"><img src="img/dashboardbutton.png" /></a>
     </div>
    
-        <?php if (!$gebruiker->heeftRecht($_SESSION['gebruiker_recht'], $recht_array['Leerling'])) { ?>
+       
             <a href="?page=locatie&subpage=locatieoverzicht">Alle Locaties</a>
-        <?php } ?>
+        
         <a href="?page=locatie&subpage=nieuwelocatie">Nieuwe locatie</a>
     
 </div>
@@ -16,7 +16,7 @@
         switch ($_GET['subpage']) {
             case "locatieoverzicht": include 'locatieoverzicht.php';
                 break;
-            case "nieuwelocatie": include 'nieuwelocatie.php';
+            case "nieuwelocatie": include 'locationForm.php';
                 break;
             case "gebruikerview": include 'userview.php';
                 break;
