@@ -7,7 +7,7 @@
         switch ($_GET['subpage']) {
             case "locatie": include 'locatieoverzicht.php';
                 break;
-            case "nieuwelocatie": include 'locationForm.php';
+            case "nieuwelocatie": include 'nieuwelocatie.php';
                 break;
             case "locatieaanpassen": include 'locatieaanpassen.php';
                 break;
@@ -38,6 +38,7 @@
             <th>Wijzigen</th>
             <th>Actief</th>
             <th>Locatie naam</th>
+            <th>Locatie plaats</th>
         </tr>
     </thead>
     <tbody>
@@ -45,7 +46,7 @@
     foreach($locatie_list as $idx => $locatietest) {
         echo '<tr>'
                . ' <td>'.
-                    '<a href="?page=locatieoverzicht&subpage=locatieaanpassen&id='
+                    '<a href="?page=locatie&subpage=locatieaanpassen&id='
                         .$locatietest->getLocatieId(). '">
                             <img width="30" src="img/aanpassen.png""/>
                     </a>'
@@ -58,6 +59,9 @@
                 } echo '</td>'
                 . '<td>'
                     .$locatietest->getLocatieNaam()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatiePlaats()
                 . '</td>'
             .'</tr>';
     }

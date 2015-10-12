@@ -57,7 +57,9 @@ class Locatie
      */
      
     private $locatie_naam = null;
-    
+    private $locatie_plaats = null;
+
+
     /**
      * Short description of attribute actief
      *
@@ -134,6 +136,12 @@ class Locatie
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCF end
     }
     
+    public function getLocatiePlaats()
+    {
+        // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCF begin
+        return $this->locatie_plaats;
+        // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCF end
+    }
      /**
      * Short description of method getActief
      *
@@ -181,7 +189,22 @@ class Locatie
         $this->locatie_naam = $locatie_naam;
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCC end
     }
-
+    /**
+     * Short description of method setNaam
+     *
+     * @access public
+     * @author Adra Philipse
+     * @param  naam
+     * @return mixed
+     * @since 17-02-14
+     * @version 1.0
+     */
+    public function setLocatiePlaats($locatie_plaats)
+    {
+        // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCC begin
+        $this->locatie_plaats = $locatie_plaats;
+        // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCC end
+    }
     /**
      * Short description of method setActief
      *
@@ -197,23 +220,40 @@ class Locatie
         // section -84-29--19--27--4cca31ee:14ac931db09:-8000:0000000000000E4F end
     }
     
+    public function getLocatieByActief($locatie_actief) {
+        return $this->DbLocatie->getLocatieByActief($locatie_actief);
+    }
+    
+    public function getLocatieByNaam($locatie_naam){
+        return $this->DbLocatie->getLocatieByNaam($locatie_naam);
+    }
+    
+    public function getLocatieById($locatie_id) {
+        return $this->DbLocatie->getLocatieByIdDb($locatie_id);
+    }
+    
     /**
      * De save functie wordt gebruikt om een locatie op te slaan in de
      * database.
      */
     public function createLocatie() {
          $this->DbLocatie->createLocatieDb(
-                $this->getLocatieNaam(), 
+                $this->getLocatieNaam(),
+                $this->getLocatiePlaats(), 
                 $this->getLocatieActief()
-                 );
-      
-         
-        // Sla recht op basis van rechtgroep id (gebruiker_recht tabel)
+        );
     }
-    public function getLocatieByActief($locatie_actief) {
-        return $this->db->getLocatieByActief($locatie_actief);
+    /**
+     * De update functie wordt gebruikt om een locatie te wijzigen in de
+     * database.
+     */
+    public function updateLocatie() {
+        $this->DbLocatie->updateLocatieDb(
+                $this->getLocatieNaam(), 
+                $this->getLocatiePlaats(), 
+                $this->getLocatieActief()
+        );
     }
-
 
 } /* end of class Locatie */
 

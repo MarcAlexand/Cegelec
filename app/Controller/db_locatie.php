@@ -22,6 +22,7 @@ class DbLocatie extends Database {
      * @var string
      */
     private $locatie_naam;
+    private $locatie_plaats;
 
     /**
      * Dit is de login tijd van een gebruiker.
@@ -56,6 +57,11 @@ class DbLocatie extends Database {
         return $this->locatie_naam;
     }
     
+    
+    public function getLocatiePlaats(){
+        return $this->locatie_plaats;
+    }
+    
     /**
      * @return type locatie_actief
      */
@@ -69,25 +75,31 @@ class DbLocatie extends Database {
      * @param type $locatie_actief
      * @return boolean
      */
-    public function createLocatieDb($locatie_naam, $locatie_actief) {
-        $query = "INSERT INTO `locatie` (
+    public function createLocatieDb($locatie_naam, $locatie_plaats, $locatie_actief ) {
+         echo __FILE__.__LINE__.__FUNCTION__.'<br />';
+         echo '<pre>';
+         var_dump($locatie_naam, $locatie_plaats);
+         echo '</pre>';
+        $query = "INSERT INTO `cegelec`.`locatie` (
                 `locatie_naam` ,
+                `locatie_plaats`,
                 `locatie_actief`
                 )
                   VALUES (
                 '" . $locatie_naam . "',   
+                '" . $locatie_plaats . "',
                 '" . $locatie_actief . "'
                 );";
-        
-        var_dump( $query );
-        
+        var_dump($query);
         if (!$this->dbquery($query)) {
             return false;
         } else {
             $this->locatie_naam = $locatie_naam;
+            $this->locatie_naam = $locatie_plaats;
             $this->locatie_actief = $locatie_actief;
             return true;
         }
+        
     }
 
     /**
@@ -102,8 +114,9 @@ class DbLocatie extends Database {
      * @param type $gebruiker_user
      * @return array
      */
-    public function getLocatieByName($locatieNaam) {
-        $query = "SELECT * FROM gebruiker WHERE locatie_naam = '$locatieNaam'";
+    public function getLocatieByNaam($locatie_naam) {
+
+        $query = "SELECT * FROM locatie WHERE locatie_naam = '$locatie_naam'";
         $this->dbquery($query);
         $user = $this->dbFetchAll($query);
         if ($user == NULL) {
@@ -121,13 +134,13 @@ class DbLocatie extends Database {
     public function getLocatieByIdDb($locatie_id) {
         // Query selecteert gebruiker aan de hand ingevoerde parameter.
         $query = "SELECT * FROM `locatie` WHERE 
-            `locatie_id` = " . mysql_real_escape_string($locatie_id);
+            `locatie_id` = " . $locatie_id;
         // haalt de array op aan de hand van database's fetchDbArray function.
         // als het null is,
-        $result = $this->dbquery($query);
+         $this->dbquery($query);
         
-        $data = $this->dbFetchArray($result);
-        
+        $data = $this->dbFetchArray($query);
+        return $data;
     }
 
     /**
@@ -139,6 +152,7 @@ class DbLocatie extends Database {
         $query = "SELECT * FROM  `locatie` ORDER BY  `locatie`.`locatie_naam` ASC";
         // haalt de array op aan de hand van database's fetchDbArray function.
         // als het null is,
+
         if (!$this->dbquery($query)) {
             return false;
         }
@@ -152,8 +166,10 @@ class DbLocatie extends Database {
             $locatie_object[$row['locatie_id']] = new Locatie(new DbLocatie());
             
             $locatie_object[$row['locatie_id']]->setLocatieId($this->dbOutString($row['locatie_id']));
-            $locatie_object[$row['locatie_id']]->setLocatieActief($this->dbOutString($row['locatie_actief']));
             $locatie_object[$row['locatie_id']]->setLocatieNaam($this->dbOutString($row['locatie_naam']));
+            $locatie_object[$row['locatie_id']]->setLocatiePlaats($this->dbOutString($row['locatie_plaats']));
+            $locatie_object[$row['locatie_id']]->setLocatieActief($this->dbOutString($row['locatie_actief']));
+            
         }
         
         return $locatie_object;
@@ -168,19 +184,19 @@ class DbLocatie extends Database {
      * @param type $gebruiker_id
      * @return boolean
      */
-    public function updateLocatieDb($locatie_naam, $locatie_actief, $locatie_id) {
-        // serialize rights
-        $rechten = serialize($rechten);
+    public function updateLocatieDb($locatie_naam, $locatie_plaats, $locatie_actief, $locatie_id) {
         // Query updates the item using inserted parameters. 
         $query = "UPDATE `locatie` 
-                    SET `locatie_naam` = '" . mysqli_real_escape_string($locatie_naam) . "',
-                        `locatie_actief` = '" . mysqli_real_escape_string($locatie_actief) . "' WHERE
-                        `locatie_id` =" . mysqli_real_escape_string($locatie_id);
+                    SET `locatie_naam` = '" . $locatie_naam . "',
+                        `locatie_plaats` = '" . $locatie_plaats."',
+                        `locatie_actief` = '" . $locatie_actief . "' WHERE
+                        `locatie_id` =" . $locatie_id;
         
         if (!$this->dbquery($query)) {
             return false;
         } else {
             $this->locatie_naam = $locatie_naam;
+            $this->locatie_plaats = $locatie_plaats;
             $this->locatie_actief = $locatie_actief;
             $this->locatie_id = $locatie_id;
         }

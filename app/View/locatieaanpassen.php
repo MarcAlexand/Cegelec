@@ -1,8 +1,13 @@
 <?php 
     $locatie = new Locatie( new DbLocatie);
+    $locatie_plaats = $locatie->getLocatieById($_GET["id"]);
+    $locatie_naam = $locatie->getLocatieByNaam($locatie_plaats["locatie_naam"]);
+    
     ?>
 <div id="loginwrap">
-    <nav>
+   
+    <h2>Locatie aanpassen :  <?php echo $locatie_naam[0]['locatie_naam']; ?></h2>
+     <nav>
 <div id="">
 <a href="?page=dashboard">
     <img src="img/dashboardbutton.png" />
@@ -15,7 +20,6 @@
 <a href="?page=locatie&subpage=nieuwelocatie">Nieuwe Locatie</a>
 
 </nav>
-    <h2>Nieuwe Locatie</h2>
     
     <?php 
     
@@ -30,10 +34,12 @@
     try {
         $locatie = new Locatie();
         $locatie->setLocatieNaam($_POST['locatie_naam']);
+        $locatie->setLocatiePlaats($_POST['locatie_naam']);
         $locatie->setLocatieActief($_POST['locatie_actief']);
     
     } catch (Exception $e) {
-        $error_array['locatie_naam']  
+        $error_array['locatie_naam']
+                    ['locatie_plaats']
                     ['locatie_actief']
                 = $e->getMessage();
         
@@ -42,12 +48,12 @@
      // Locatie opslaan in database
      
     if( empty($error_array)){
-    $locatie->createLocatie();
+    $locatie->updateLocatie();
     
-    
+    var_dump($locatie);
    
     echo "<div id='result'>";
-    echo 'Uw locatie is <strong>succesvol</strong> aangemaakt!';
+    echo 'Uw locatie is <strong>succesvol</strong> aangepast!';
     echo "</div>";
     } 
 }
@@ -61,15 +67,23 @@
         <table>
             <tr>
                 <td>
-                    <h4>Locaties toevoegen</h4>
+                    <h4>Locaties aanpassen</h4>
                 </td>
             </tr>
             <tr>
                 <td>
-                        Nieuwe locatie : 
+                    Naam locatie: 
                 </td>
                 <td>
-                    <input type="text" name="locatie_naam" placeholder=" locatie naam">
+                    <input type="text" name="locatie_naam" placeholder="<?php echo $locatie_naam[0]['locatie_naam']; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Naam plaats: 
+                </td>
+                <td>
+                    <input type="text" name="locatie_plaats" placeholder="<?php echo $locatie_naam[0]['locatie_plaats']; ?>">
                 </td>
             </tr>
             <tr>
@@ -77,8 +91,14 @@
                         Activeren : 
                 </td>
                 <td>
-                    <input type="checkbox" name="locatie_actief" value="1"> Ja
-                    <input type="checkbox" name="locatie_actief" value="0"> Nee
+                    <select>
+                        <option value="1">
+                            Activeren
+                        </option>
+                        <option value="0">
+                            Deactiveren
+                        </option>
+                    </select>
                 </td>
             </tr>
             <tr>
