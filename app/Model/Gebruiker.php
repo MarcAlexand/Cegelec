@@ -376,9 +376,6 @@ class Gebruiker
         // section -84-19-76-71--c917496:15022315175:-8000:0000000000001056 end
     }
     
-    
-        
-        
    
 //    public function setParameters($parameters) {
 //        $expected = ['voornaam', 'achternaam'];

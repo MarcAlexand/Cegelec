@@ -987,7 +987,7 @@ class DbGebruiker extends database {
             
             $result = $this->dbquery($query);
          
-            echo $query;
+            
 //        if (!$this->dbquery($query)) {
 //            return false;
 //        } else {
@@ -1033,7 +1033,8 @@ class DbGebruiker extends database {
         // serialize rights
         //$rechten = serialize($rechten);
         // Query updates the item using inserted parameters.
-        var_dump($myinputs);
+        
+        
         $query = "UPDATE `gebruiker`
                     SET `gebruiker_user` = '" . $myinputs['gebruiker_username'] . "',
                         `gebruiker_email` = '" . $myinputs['gebruiker_email'] . "',

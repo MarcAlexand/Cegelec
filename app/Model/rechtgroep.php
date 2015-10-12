@@ -57,12 +57,7 @@ class RechtGroep {
         $dbRechtGroep->setRechtGroepId($this->recht_groep_id);
         $data = $dbRechtGroep->getRechtGroep();
 
-        //*
-        echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
-        //*/
+        
         
         if (!empty($data)) {
             // Update class members

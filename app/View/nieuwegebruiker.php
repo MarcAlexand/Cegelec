@@ -223,12 +223,7 @@ if (isset($_POST) && !empty($_POST)) {
     } ?>
     <?php
     
-    /*
-    echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-    echo '<pre>';
-    var_dump($mail);
-    echo '</pre>';
-    //*/
+    
     ?>
     <!--    <INPUT type="button" value="Add Row" onClick="addRow('dataTable')" />-->
     <input type="submit" class="knopje" name="Verzenden" value="Aanmaken" />

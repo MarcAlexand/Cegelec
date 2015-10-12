@@ -1146,13 +1146,7 @@ class Gebruikertemp
             //haal rechtengroep rechten op
             $rechten = new RechtGroep($myinputs['recht']);
             
-            //*
-            echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-            echo '<pre>';
-            var_dump($rechten);
-            var_dump($rechten->getRechtBitfield());
-            echo '</pre>';
-            //*/
+            
             
             
             $this->setGebruikerUser($myinputs['gebruiker_user']);

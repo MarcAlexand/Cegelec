@@ -66,12 +66,7 @@ $countArray = count($meetwaarde_array);
              .'</tr>';
          }
          
-         //*
-         echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-         echo '<pre>';
-         var_dump($meetwaarde);
-         echo '</pre>';
-         //*/
+         
                         ?>
         <tbody>
     </table>

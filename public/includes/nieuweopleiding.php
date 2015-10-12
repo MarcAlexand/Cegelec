@@ -5,12 +5,7 @@ $opleiding_array = $opleiding->getOpleidingList();
 
 $countArray = count($opleiding_array);
 
-/*
-echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
-//*/
+
 
 $error_array = array();
     
