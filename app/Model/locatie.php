@@ -251,7 +251,8 @@ class Locatie
         $this->DbLocatie->updateLocatieDb(
                 $this->getLocatieNaam(), 
                 $this->getLocatiePlaats(), 
-                $this->getLocatieActief()
+                $this->getLocatieActief(),
+                $this->getLocatieId()
         );
     }
 

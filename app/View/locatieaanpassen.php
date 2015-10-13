@@ -2,6 +2,7 @@
     $locatie = new Locatie( new DbLocatie);
     $locatie_plaats = $locatie->getLocatieById($_GET["id"]);
     $locatie_naam = $locatie->getLocatieByNaam($locatie_plaats["locatie_naam"]);
+
     
     ?>
 <div id="loginwrap">
@@ -33,8 +34,9 @@
     
     try {
         $locatie = new Locatie();
+        $locatie->setLocatieId($_GET["id"]);
         $locatie->setLocatieNaam($_POST['locatie_naam']);
-        $locatie->setLocatiePlaats($_POST['locatie_naam']);
+        $locatie->setLocatiePlaats($_POST['locatie_plaats']);
         $locatie->setLocatieActief($_POST['locatie_actief']);
     
     } catch (Exception $e) {
@@ -50,8 +52,8 @@
     if( empty($error_array)){
     $locatie->updateLocatie();
     
-    var_dump($locatie);
-   
+    
+    header("Location:http://actemium:8888/public/index.php?page=locatie");
     echo "<div id='result'>";
     echo 'Uw locatie is <strong>succesvol</strong> aangepast!';
     echo "</div>";
@@ -75,7 +77,7 @@
                     Naam locatie: 
                 </td>
                 <td>
-                    <input type="text" name="locatie_naam" placeholder="<?php echo $locatie_naam[0]['locatie_naam']; ?>">
+                    <input type="text" name="locatie_naam" value="<?php echo $locatie_naam[0]['locatie_naam']; ?>">
                 </td>
             </tr>
             <tr>
@@ -83,7 +85,7 @@
                     Naam plaats: 
                 </td>
                 <td>
-                    <input type="text" name="locatie_plaats" placeholder="<?php echo $locatie_naam[0]['locatie_plaats']; ?>">
+                    <input type="text" name="locatie_plaats" value="<?php echo $locatie_naam[0]['locatie_plaats']; ?>">
                 </td>
             </tr>
             <tr>
@@ -91,7 +93,7 @@
                         Activeren : 
                 </td>
                 <td>
-                    <select>
+                    <select name="locatie_actief">
                         <option value="1">
                             Activeren
                         </option>
