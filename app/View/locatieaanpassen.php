@@ -36,11 +36,17 @@
         $locatie = new Locatie();
         $locatie->setLocatieId($_GET["id"]);
         $locatie->setLocatieNaam($_POST['locatie_naam']);
+        $locatie->setLocatieTelefoonnummer($_POST['locatie_telefoonnummer']);
+        $locatie->setLocatieStraat($_POST['locatie_straat']);
+        $locatie->setLocatiePostcode($_POST['locatie_postcode']);
         $locatie->setLocatiePlaats($_POST['locatie_plaats']);
         $locatie->setLocatieActief($_POST['locatie_actief']);
     
     } catch (Exception $e) {
         $error_array['locatie_naam']
+                    ['locatie_telefoonnummer']
+                    ['locatie_straat']
+                    ['locatie_postcode']
                     ['locatie_plaats']
                     ['locatie_actief']
                 = $e->getMessage();
@@ -65,31 +71,32 @@
         echo FORM_TEXT_ERROR_IN_FORM;
     }
     ?>
-    <form method="POST" action="#" class="formulier">
+    <form method="POST" action="#" id="ticketform">
+        <section id="gebruiker">
         <table>
             <tr>
-                <td>
+                <td colspan="2" style="text-align: center">
                     <h4>Locaties aanpassen</h4>
                 </td>
             </tr>
             <tr>
-                <td>
-                    Naam locatie: 
+                <td style="text-align: left; padding-right: 10px;">
+                    Naam: 
                 </td>
                 <td>
                     <input type="text" name="locatie_naam" value="<?php echo $locatie_naam[0]['locatie_naam']; ?>">
                 </td>
             </tr>
             <tr>
-                <td>
-                    Naam plaats: 
+                <td style="text-align: left; padding-right: 10px;">
+                    Telefoonnummer: 
                 </td>
                 <td>
-                    <input type="text" name="locatie_plaats" value="<?php echo $locatie_naam[0]['locatie_plaats']; ?>">
+                    <input type="text" name="locatie_telefoonnummer" value="<?php echo $locatie_naam[0]['locatie_telefoonnummer']; ?>">
                 </td>
             </tr>
             <tr>
-                <td>
+                <td style="text-align: left; padding-right: 10px;">
                         Activeren : 
                 </td>
                 <td>
@@ -104,11 +111,41 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="2" style="text-align:center">
+                    <b>Adres gegevens</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-right: 10px;">
+                    Straat: 
+                </td>
                 <td>
+                    <input type="text" name="locatie_straat" value="<?php echo $locatie_naam[0]['locatie_straat']; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-right: 10px;">
+                    Postcode: 
+                </td>
+                <td>
+                    <input type="text" name="locatie_postcode" value="<?php echo $locatie_naam[0]['locatie_postcode']; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-right: 10px;">
+                    Plaats: 
+                </td>
+                <td>
+                    <input type="text" name="locatie_plaats" value="<?php echo $locatie_naam[0]['locatie_plaats']; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="padding-top: 10px;">
                     <input type="submit" class="knopje" name="submit_toevoegen" value="Aanmaken">
                 </td>
             </tr>
     </table>
+        </section>
 </form>
 </div><?php
 

@@ -57,7 +57,11 @@ class Locatie
      */
      
     private $locatie_naam = null;
+    private $locatie_telefoonnummer = null;
+    private $locatie_straat = null;
+    private $locatie_postcode = null;
     private $locatie_plaats = null;
+    
 
 
     /**
@@ -134,6 +138,18 @@ class Locatie
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCF begin
         return $this->locatie_naam;
         // section 10-0-3-23-673998d2:1443efef047:-8000:0000000000000BCF end
+    }
+    
+    public function getLocatieTelefoonnummer() {
+        return $this->locatie_telefoonnummer;
+    }
+    
+    public function getLocatieStraat() {
+        return $this->locatie_straat;
+    }
+    
+    public function getLocatiePostcode() {
+        return $this->locatie_postcode;
     }
     
     public function getLocatiePlaats()
@@ -220,6 +236,18 @@ class Locatie
         // section -84-29--19--27--4cca31ee:14ac931db09:-8000:0000000000000E4F end
     }
     
+    public function setLocatieTelefoonnummer($locatie_telefoonnummer) {
+        $this->locatie_telefoonnummer = $locatie_telefoonnummer;
+    }
+    
+    public function setLocatieStraat($locatie_straat) {
+        $this->locatie_straat = $locatie_straat;
+    }
+    
+    public function setLocatiePostcode($locatie_postcode) {
+        $this->locatie_postcode = $locatie_postcode;
+    }
+    
     public function getLocatieByActief($locatie_actief) {
         return $this->DbLocatie->getLocatieByActief($locatie_actief);
     }
@@ -239,6 +267,9 @@ class Locatie
     public function createLocatie() {
          $this->DbLocatie->createLocatieDb(
                 $this->getLocatieNaam(),
+                $this->getLocatieTelefoonnummer(),
+                $this->getLocatieStraat(),
+                $this->getLocatiePostcode(),
                 $this->getLocatiePlaats(), 
                 $this->getLocatieActief()
         );
@@ -249,7 +280,10 @@ class Locatie
      */
     public function updateLocatie() {
         $this->DbLocatie->updateLocatieDb(
-                $this->getLocatieNaam(), 
+                $this->getLocatieNaam(),
+                $this->getLocatieTelefoonnummer(),
+                $this->getLocatieStraat(),
+                $this->getLocatiePostcode(),
                 $this->getLocatiePlaats(), 
                 $this->getLocatieActief(),
                 $this->getLocatieId()

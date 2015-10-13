@@ -31,13 +31,18 @@
     try {
         $locatie = new Locatie();
         $locatie->setLocatieNaam($_POST['locatie_naam']);
+        $locatie->setLocatieTelefoonnummer($_POST['locatie_telefoonnummer']);
+        $locatie->setLocatieStraat($_POST['locatie_straat']);
+        $locatie->setLocatiePostcode($_POST['locatie_postcode']);
         $locatie->setLocatiePlaats($_POST['locatie_plaats']);
-        $locatie->setLocatieActief($_POST['locatie_actief']);
+        
     
     } catch (Exception $e) {
-        $error_array['locatie_naam']  
+        $error_array['locatie_naam']
+                    ['locatie_telefoonnummer']
+                    ['locatie_straat']
+                    ['locatie_postcode']
                     ['locatie_plaats']
-                    ['locatie_actief']
                 = $e->getMessage();
         
     }
@@ -72,7 +77,32 @@
                     Naam: 
                 </td>
                 <td>
-                    <input type="text" name="locatie_naam" placeholder=" locatie naam">
+                    <input type="text" name="locatie_naam" placeholder="naam">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Telefoonnummer : 
+                </td>
+                <td style="text-align: center;">
+                    <input type="text" name="locatie_telefoonnummer" placeholder="telefoonnummer">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <b>Adres gegevens : </b>
+                </td>
+            </tr>
+            <tr>
+                <td> Straat</td>
+                <td style="text-align: center;">
+                    <input type="text" name="locatie_straat" placeholder="straat">
+                </td>
+            </tr>
+            <tr>
+                <td> Postcode</td>
+                <td style="text-align: center;">
+                    <input type="text" name="locatie_postcode" placeholder="postcode">
                 </td>
             </tr>
             <tr>
@@ -80,27 +110,12 @@
                     Plaats: 
                 </td>
                 <td>
-                    <input type="text" name="locatie_plaats" placeholder=" locatie plaats">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Activeren : 
-                </td>
-                <td style="text-align: center;">
-                    <select name="locatie_actief">
-                        <option value="1">
-                            Actief
-                        </option>
-                        <option value="0">
-                            Inactief
-                        </option>
-                    </select>
+                    <input type="text" name="locatie_plaats" placeholder="plaats">
                 </td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center;">
-                    <input type="submit" class="knopje" name="submit_toevoegen" value="Aanmaken">
+                    <input type="submit" class="knopje" name="submit_toevoegen" value="Opslaan">
                 </td>
             </tr>
     </table>

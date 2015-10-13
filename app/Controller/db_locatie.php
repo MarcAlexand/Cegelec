@@ -57,6 +57,16 @@ class DbLocatie extends Database {
         return $this->locatie_naam;
     }
     
+    public function getLocatieTelefoonnummer(){
+        return $this->locatie_telefoonnummer;
+;    }
+    
+    public function getLocatieStraat(){
+        return $this->locatie_straat;
+    }
+    public function getLocatiePostcode(){
+        return $this->locatie_postcode;
+    }
     
     public function getLocatiePlaats(){
         return $this->locatie_plaats;
@@ -75,28 +85,33 @@ class DbLocatie extends Database {
      * @param type $locatie_actief
      * @return boolean
      */
-    public function createLocatieDb($locatie_naam, $locatie_plaats, $locatie_actief ) {
-         echo __FILE__.__LINE__.__FUNCTION__.'<br />';
-         echo '<pre>';
-         var_dump($locatie_naam, $locatie_plaats);
-         echo '</pre>';
+    public function createLocatieDb($locatie_naam,$locatie_telefoonnummer,$locatie_straat,
+                                    $locatie_postcode, $locatie_plaats, $locatie_actief ) {
         $query = "INSERT INTO `cegelec`.`locatie` (
                 `locatie_naam` ,
+                `locatie_telefoonnummer`,
+                `locatie_straat`,
+                `locatie_postcode`,
                 `locatie_plaats`,
                 `locatie_actief`
                 )
                   VALUES (
-                '" . $locatie_naam . "',   
+                '" . $locatie_naam . "',
+                '" . $locatie_telefoonnummer ."',
+                '" . $locatie_straat ."',
+                '" . $locatie_postcode."',
                 '" . $locatie_plaats . "',
-                '" . $locatie_actief . "'
+                '" . 1 . "'
                 );";
-        var_dump($query);
         if (!$this->dbquery($query)) {
             return false;
         } else {
             $this->locatie_naam = $locatie_naam;
-            $this->locatie_naam = $locatie_plaats;
-            $this->locatie_actief = $locatie_actief;
+            $this->locatie_telefoonnummer = $locatie_telefoonnummer;
+            $this->locatie_straat = $locatie_straat;
+            $this->locatie_postcode = $locatie_postcode;            
+            $this->locatie_plaats = $locatie_plaats;
+            $this->locatie_actief = 1;
             return true;
         }
         
@@ -167,6 +182,9 @@ class DbLocatie extends Database {
             
             $locatie_object[$row['locatie_id']]->setLocatieId($this->dbOutString($row['locatie_id']));
             $locatie_object[$row['locatie_id']]->setLocatieNaam($this->dbOutString($row['locatie_naam']));
+            $locatie_object[$row['locatie_id']]->setLocatieTelefoonnummer($this->dbOutString($row['locatie_telefoonnummer']));
+            $locatie_object[$row['locatie_id']]->setLocatieStraat($this->dbOutString($row['locatie_straat']));
+            $locatie_object[$row['locatie_id']]->setLocatiePostcode($this->dbOutString($row['locatie_postcode']));
             $locatie_object[$row['locatie_id']]->setLocatiePlaats($this->dbOutString($row['locatie_plaats']));
             $locatie_object[$row['locatie_id']]->setLocatieActief($this->dbOutString($row['locatie_actief']));
             
@@ -184,10 +202,14 @@ class DbLocatie extends Database {
      * @param type $gebruiker_id
      * @return boolean
      */
-    public function updateLocatieDb($locatie_naam, $locatie_plaats, $locatie_actief, $locatie_id) {
+    public function updateLocatieDb($locatie_naam, $locatie_telefoonnummer, $locatie_straat, 
+            $locatie_postcode, $locatie_plaats, $locatie_actief, $locatie_id) {
         // Query updates the item using inserted parameters. 
         $query = "UPDATE `locatie` 
                     SET `locatie_naam` = '" . $locatie_naam . "',
+                        `locatie_telefoonnummer` = '" . $locatie_telefoonnummer."',
+                        `locatie_straat` = '" . $locatie_straat."',
+                        `locatie_postcode` = '" . $locatie_postcode."',
                         `locatie_plaats` = '" . $locatie_plaats."',
                         `locatie_actief` = '" . $locatie_actief . "' WHERE
                         `locatie_id` =" . $locatie_id;
@@ -196,6 +218,9 @@ class DbLocatie extends Database {
             return false;
         } else {
             $this->locatie_naam = $locatie_naam;
+            $this->locatie_telefoonnummer = $locatie_telefoonnummer;
+            $this->locatie_straat = $locatie_straat;
+            $this->locatie_postcode = $locatie_postcode;
             $this->locatie_plaats = $locatie_plaats;
             $this->locatie_actief = $locatie_actief;
             $this->locatie_id = $locatie_id;

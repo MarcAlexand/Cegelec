@@ -37,8 +37,11 @@
        <tr>
             <th>Wijzigen</th>
             <th>Actief</th>
-            <th>Locatie naam</th>
-            <th>Locatie plaats</th>
+            <th>Naam</th>
+            <th>Telefoonnummer</th>
+            <th>Straat</th>
+            <th>Postcode</th>
+            <th>Plaats</th>
         </tr>
     </thead>
     <tbody>
@@ -59,6 +62,15 @@
                 } echo '</td>'
                 . '<td>'
                     .$locatietest->getLocatieNaam()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatieTelefoonnummer()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatieStraat()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatiePostcode()
                 . '</td>'
                 . '<td>'
                     .$locatietest->getLocatiePlaats()
