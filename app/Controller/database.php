@@ -1,6 +1,5 @@
 <?php
 
-require_once FILE_DB_CONSTANTS;
 /**
  * Short description of class database
  *
@@ -52,7 +51,7 @@ class database
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000871 begin
         $this->error = new Error();
         /* Make connection to database */
-        $this->connection = mysqli_connect (DB_SERVER, DB_USER, DB_PASS, DB_NAME) or die('There was a problem connecting to the database');
+        $this->connection = mysqli_connect ('localhost', 'root', '', 'cegelec') or die('There was a problem connecting to the database');
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000871 end
     }
 

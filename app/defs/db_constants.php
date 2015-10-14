@@ -17,3 +17,5 @@ define("DB_NAME", "cegelec");
 
 // text constants
 define("TXT_NO_DATA",               "Geen gegevens gevonden.");
+
+?>

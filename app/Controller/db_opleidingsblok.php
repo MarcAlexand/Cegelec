@@ -5,7 +5,7 @@
  * @access public
  * @author firstname and lastname of author, <author@example.org>
  */
-class DbOpleiding
+class DbOpleidingsblok
     extends database
 {
     // --- ASSOCIATIONS ---
@@ -19,7 +19,7 @@ class DbOpleiding
      * @access private
      * @var Integer
      */
-    private $opleiding_id;
+    private $opleidingsblok_id;
 
     /**
      * Short description of attribute opleiding_naam
@@ -27,7 +27,7 @@ class DbOpleiding
      * @access private
      * @var String
      */
-    private $opleiding_naam;
+    private $opleidingsblok_naam;
 
     /**
      * Short description of attribute opleiding_status
@@ -45,15 +45,12 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public $opleiding_start_datum;
+    public $opleidingsblok_omschrijving;
     
-    public $opleiding_eind_datum;
     
-    public $opleiding_niveau;
+    public $opleidingsblok_actief;
     
-    public $opleiding_duur;
-    
-    public $opleiding_actief;
+    public $fk_opleiding_id;
 
     public function __construct()
     {
@@ -70,10 +67,10 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function setOpleidingId($opleiding)
+    public function setOpleidingsblokId($opleidingsblok)
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000906 begin
-        $this->opleiding_id = $opleiding;
+        $this->opleidingsblok_id = $opleidingsblok;
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000906 end
     }
 
@@ -84,10 +81,10 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function setOpleidingNaam($opleiding)
+    public function setOpleidingsblokNaam($opleidingsblok)
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000908 begin
-        $this->opleiding_naam = $opleiding;
+        $this->opleidingsblok_naam = $opleidingsblok;
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000908 end
     }
     
@@ -99,34 +96,18 @@ class DbOpleiding
      * @return mixed
      */
 
-    public function setOpleidingStartDatum($opleiding)
+    public function setOpleidingsblokOmschrijving($opleidingsblok)
     {
-        $this->opleiding_start_datum = $opleiding;
+        $this->opleidingsblok_omschrijving = $opleidingsblok;
+    }
+  
+    public function setOpleidingsblokActief($opleidingsblok) {
+        $this->opleidingsblok_actief = $opleidingsblok;
     }
     
-    public function setOpleidingEindDatum($opleiding)
-    {
-        $this->opleiding_eind_datum = $opleiding;  
+    public function setFkOpleidingId($opleidingsblok) {
+        $this->fk_opleiding_id = $opleidingsblok;
     }
-    
-    public function setOpleidingNiveau($opleiding)
-    {
-        $this->opleiding_niveau = ($opleiding);
-    }
-    
-    public function setOpleidingDuur($opleiding)
-    {
-        $this->opleiding_duur = ($opleiding);
-    }
-    public function setOpleidingActief($opleiding) {
-        $this->opleiding_actief = $opleiding;
-    }
-       public function setSessie_Id($sessie_id) {
-        // section -64--88-11-18--47a40d06:14be55cded8:-8000:0000000000000AF1 begin
-        $this->sessie_id = $sessie_id;
-        // section -64--88-11-18--47a40d06:14be55cded8:-8000:0000000000000AF1 end
-    }
-
     /**
      * Short description of method getOpleidingById
      *
@@ -134,12 +115,12 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingById($id)
+    public function getOpleidingsblokById($id)
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008FB begin
         // Query selects the item using inserted parameter.
-        $query = "SELECT * FROM `opleiding` WHERE 
-            `opleiding_id` =". ($id) ."";
+        $query = "SELECT * FROM `opleidingsblok` WHERE 
+            `opleidingsblok_id` =". ($id) ."";
         // fetches the array using Database's fetchDbArray function.
         // If it's null,
         if (!$this->dbquery($query)) {
@@ -164,35 +145,7 @@ class DbOpleiding
 //        return $opleiding;
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008FB end
     }
-        public function getOpleidingByActief($opleiding_naam) {
-        $query = "SELECT * FROM opleiding WHERE (opleiding_naam = '$opleiding_naam')"
-                . "AND (opleiding_actief= 1)";
 
-        $this->dbQuery($query);
-        $user = $this->dbFetchAll($query);
-
-        if ($user == NULL) {
-            return FALSE;
-        } else {
-            // als het niet null is, return the array.
-            return $user;
-        }
-    }
-
-    public function getOpleidingByName($opleiding_naam){
-        
-        $query = "SELECT `opleiding_id` FROM `opleiding` WHERE `opleiding_naam` = '$opleiding_naam'";
-        
-        $this->dbQuery($query);
-        $opleiding_id = $this->dbFetchAll($query);  
-        
-        if ($opleiding_id == NULL) {
-            return FALSE;
-        } else {
-            // als het niet null is, return the array.
-            return $opleiding_id;
-        } 
-    }
     /**
      * Short description of method getOpleidingId
      *
@@ -200,10 +153,10 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingId()
+    public function getOpleidingsblokId()
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008FD begin
-        return $this->opleiding_id;
+        return $this->opleidingsblok_id;
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008FD end
     }
 
@@ -214,39 +167,22 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingNaam()
+    public function getOpleidingsblokNaam()
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008FF begin
-        return $this->opleiding_naam;
+        return $this->opleidingsblok_naam;
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008FF end
     }
     
-    public function getOpleidingStartDatum()
+    public function getOpleidingsblokOmschrijving()
     {
-        return $this->opleiding_start_datum;
+        return $this->opleidingsblok_omschrijving;
     }
-    
-    public function getOpleidingEindDatum()
-    {
-        return $this->opleiding_eind_datum;
+    public function getOpleidingsblokActief() {    
+        return $this->opleidingsblok_actief;
     }
-
-    public function getOpleidingNiveau()
-    {
-        return $this->opleiding_niveau;
-    }
-    
-    public function getOpleidingDuur()
-    {
-        return $this->opleiding_duur;
-    }
-    public function getOpleidingActief() {    
-        return $this->opleiding_actief;
-    }
-      public function getSessie_Id() {
-        // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008D5 begin
-        return $this->sessie_id;
-        // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008D5 end
+    public function getFkOpleidingId() {
+        return $this->fk_opleiding_id;
     }
         /**
     }
@@ -257,15 +193,13 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingList()
+    public function getOpleidingsblokList()
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:0000000000000904 begin
         // Query selects the item using class vars.
-        //$query = "SELECT * FROM  `opleiding` ORDER BY  `opleiding`.`opleiding_id` ASC";
-//        $query = "SELECT opleiding.*, opleidingsblok.* FROM `opleidingsblok` INNER JOIN opleiding ON opleidingsblok.fk_opleiding_id = opleiding_id ORDER BY  opleiding.opleiding_id ASC";
+        $query = "SELECT * FROM  `opleidingsblok` ORDER BY  `opleidingsblok`.`opleidingsblok_id` ASC";
         // fetches the array using Database's fetchDbArray function.
         // If it's null,
-        $query = "SELECT * FROM `opleiding`";
         if (!$this->dbquery($query)) {
             return false;
         }
@@ -302,26 +236,25 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function createOpleidingDb()
+    public function createOpleidingsblokDb()
     {
         
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008F5 begin
-        $sql = "INSERT INTO  `cegelec`.`opleiding` (
-                `opleiding_naam`,
-                `opleiding_start_datum`,
-                `opleiding_eind_datum`,
-                `opleiding_niveau`,
-                `opleiding_duur`,
-                `opleiding_actief`
+        $sql = "INSERT INTO  `cegelec`.`opleidingsblok` (
+                `opleidingsblok_naam`,
+                `opleidingsblok_omschrijving`,
+                `opleidingsblok_actief`,
+                `fk_opleiding_id`
                 ) VALUES (
-               '" . $this->opleiding_naam . "',
-                   '" . $this->opleiding_start_datum . "',
-                       '" . $this->opleiding_eind_datum . "',
-                           '" . $this->opleiding_niveau . "',
-                               '" . $this->opleiding_duur . "', '". $this->opleiding_actief . "'    )";
-      
+               '" . $this->opleidingsblok_naam . "',
+                   '" . $this->opleidingsblok_omschrijving . "',
+                       '" . $this->opleidingsblok_actief . "',
+                           '" . $this->fk_opleiding_id . "'
+                                   )";
+   
             $result = $this->dbquery($sql);
    
+        
             return true;
      //   if (!$this->dbquery($sql)) {
      //       return false;
@@ -343,20 +276,18 @@ class DbOpleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function updateOpleidingDb($id)
+    public function updateOpleidingsblokDb($id)
     {
         
         //var_dump($id, $this);
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008F7 begin
-        $query = "UPDATE `opleiding`
-                    SET `opleiding_naam` = '" . $this->opleiding_naam . "',
-                        `opleiding_start_datum` = '" . $this->opleiding_start_datum . "',
-                        `opleiding_eind_datum` = '" . $this->opleiding_eind_datum . "',
-                        `opleiding_niveau` = '" . $this->opleiding_niveau . "',
-                        `opleiding_duur` = '" . $this->opleiding_duur . "',
-                        `opleiding_actief` = '" . $this->opleiding_actief . "'
+        $query = "UPDATE `opleidingsblok`
+                    SET `opleidingsblok_naam` = '" . $this->opleidingsblok_naam . "',
+                        `opleidingsblok_omschrijving` = '" . $this->opleidingsblok_omschrijving . "',
+                        `opleidingsblok_actief` = '" . $this->opleidingsblok_actief . "',
+                        `fk_opleiding_id` = '" . $this->fk_opleiding_id . "'
 WHERE
-                        `opleiding_id` = '" . $id    . "'";
+                        `opleidingsblok_id` = '" . $id    . "'";
 
 
         if (!$this->dbquery($query)) {
@@ -376,10 +307,24 @@ WHERE
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function deleteOpleidingDb($id)
+    public function deleteOpleidingsblokDb($id)
     {
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008F9 begin
         // section 10-0-3-49--6022aa35:14bdfb8146c:-8000:00000000000008F9 end
+    }
+    
+    public function getByOpleiding($opleiding_id) {
+        $sql = "SELECT * FROM `opleidingsblok` WHERE `fk_opleiding_id` = $opleiding_id";
+        
+        if (!$this->dbquery($sql)) {
+            return false;
+        }
+        if(!($result = $this->dbFetchAll())){
+            // set error.
+            return FALSE;
+        }
+        
+        return $result;
     }
 
 }

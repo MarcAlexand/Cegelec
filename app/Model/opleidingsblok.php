@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 /**
- * Cegelec 2 Renewed - class.Opleiding.php
+ * Cegelec 2 Renewed - class.Opleidingsblok.php
  *
  * $Id$
  *
@@ -31,7 +31,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  * @access public
  * @author firstname and lastname of author, <author@example.org>
  */
-class Opleiding
+class Opleidingsblok
 {
     // --- ASSOCIATIONS ---
 
@@ -44,7 +44,7 @@ class Opleiding
      * @access public
      * @var Integer
      */
-    public $opleiding_id;
+    public $opleidingsblok_id;
 
     /**
      * Short description of attribute opleiding_naam
@@ -52,7 +52,7 @@ class Opleiding
      * @access public
      * @var String
      */
-    public $opleiding_naam;
+    public $opleidingsblok_naam;
 
     /**
      * Short description of attribute opleiding_status
@@ -61,15 +61,11 @@ class Opleiding
      * @var Integer
      */
 
-    public $opleiding_start_datum;
+    public $opleidingsblok_omschrijving;
     
-    public $opleiding_eind_datum;
+    public $opleidingsblok_actief;
     
-    public $opleiding_niveau;
-   
-    public $opleiding_duur;
-    
-    public $opleiding_actief;
+    public $fk_opleiding_id;
     // --- OPERATIONS ---
 
     /**
@@ -82,7 +78,7 @@ class Opleiding
     public function __construct()
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CBC begin
-        $this->db = new DbOpleiding();
+        $this->db = new DbOpleidingsblok();
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CBC end
     }
 
@@ -93,10 +89,10 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function setOpleidingId($id)
+    public function setOpleidingsblokId($id)
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CCC begin
-        $this->opleiding_id = $id;
+        $this->opleidingsblok_id = $id;
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CCC end
     }
 
@@ -107,9 +103,9 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function setOpleidingNaam($opleiding)
+    public function setOpleidingsblokNaam($opleidingsblok)
             {
-       $this->opleiding_naam = $opleiding;
+       $this->opleidingsblok_naam = $opleidingsblok;
         
     }
     
@@ -121,54 +117,36 @@ class Opleiding
      * @return mixed
      */
     
-    public function setOpleidingStartDatum($opleiding){
-        $this->opleiding_start_datum = $opleiding;
+    public function setOpleidingsblokOmschrijving($opleidingsblok){
+        $this->opleidingsblok_omschrijving = $opleidingsblok;
               
     }
     
-    public function setOpleidingEindDatum($opleiding){
-        $this->opleiding_eind_datum = $opleiding;
-              
-    }
-    
-    public function setOpleidingNiveau($opleiding){
-        $this->opleiding_niveau = $opleiding;
-              
-    }
-     
-    public function setOpleidingDuur($opleiding){
-        $this->opleiding_duur = $opleiding;
-              
-    }
-     public function getSessieId()
-    {
-        return $this->sessie_id;
-    }
-
-    /**
-     * @param mixed $sessie_id
-     */
-    public function setSessieId($sessie_id)
-    {
-        $this->sessie_id = $sessie_id;
-    }
-
     /**
      * @return mixed
      */
-    public function getOpleidingActief()
+    public function getOpleidingsblokActief()
     {
-        return $this->opleiding_actief;
+        return $this->opleidingsblok_actief;
     }
-
+    
+    public function getFkOpleidingId()
+    {
+        return $this->fk_opleiding_id;
+        
+    }
     /**
      * @param mixed $actief
      */
-    public function setOpleidingActief($opleiding)
+    public function setOpleidingsblokActief($opleidingsblok)
     {
-        $this->opleiding_actief = $opleiding;
+        $this->opleidingsblok_actief = $opleidingsblok;
     }
-
+    
+    public function setFkOpleidingId($opleidingsblok)
+    {
+        $this->fk_opleiding_id = $opleidingsblok;
+    }
     /**
      * Short description of method getOpleidingById
      *
@@ -176,13 +154,26 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingById($id)
+    public function getOpleidingsblokById($id)
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC4 begin
-        return $this->db->getOpleidingById($id);
+        return $this->db->getOpleidingsblokById($id);
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC4 end
     }
+    public function getOpleidingsblokByActief($opleidingsblok_naam) {
+        $query = "SELECT * FROM opleidingsblok WHERE (opleidingsblok_naam = '$opleidingsblok_naam')"
+                . "AND (opleidingsblok_actief= 1)";
 
+        $this->dbQuery($query);
+        $user = $this->dbFetchAll($query);
+
+        if ($user == NULL) {
+            return FALSE;
+        } else {
+            // als het niet null is, return the array.
+            return $user;
+        }
+    }
     /**
      * Short description of method getOpleidingId
      *
@@ -190,10 +181,10 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingId()
+    public function getOpleidingsblokId()
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC6 begin
-        return $this->opleiding_id;
+        return $this->opleidingsblok_id;
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC6 end
     }
 
@@ -204,10 +195,10 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingNaam()
+    public function getOpleidingsblokNaam()
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC8 begin
-        return $this->opleiding_naam;
+        return $this->opleidingsblok_naam;
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC8 end
     }
     /**
@@ -218,25 +209,12 @@ class Opleiding
      * @return mixed
      */
     
-    public function getOpleidingStartDatum () {
+    public function getOpleidingsblokOmschrijving () {
         
-        return $this->opleiding_start_datum;
+        return $this->opleidingsblok_omschrijving;
     }
     
-    public function getOpleidingEindDatum () {
-        
-        return $this->opleiding_eind_datum;
-    }
-    
-    public function getOpleidingNiveau (){
-        
-        return $this->opleiding_niveau;
-    }
-    
-    
-    public function getOpleidingDuur (){
-        return $this->opleiding_duur;
-    }
+
     /**
      * Short description of method getOpleidingList
      *
@@ -244,11 +222,11 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getOpleidingList()
+    public function getOpleidingsblokList()
     {
-        // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CCA begin
-        return $this->db->getOpleidingList();
         
+        // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CCA begin
+        return $this->db->getOpleidingsblokList();
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CCA end
     }
 
@@ -259,16 +237,14 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function createOpleiding()
+    public function createOpleidingsblok()
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CBE begin
-        $this->db->setOpleidingNaam($this->opleiding_naam);
-        $this->db->setOpleidingStartDatum($this->opleiding_start_datum);
-        $this->db->setOpleidingEindDatum($this->opleiding_eind_datum);
-        $this->db->setOpleidingNiveau($this->opleiding_niveau);
-        $this->db->setOpleidingDuur($this->opleiding_duur);
-        $this->db->setOpleidingActief($this->opleiding_actief);
-        $this->db->createOpleidingDb();
+        $this->db->setOpleidingsblokNaam($this->opleidingsblok_naam);
+        $this->db->setOpleidingsblokOmschrijving($this->opleidingsblok_omschrijving);
+        $this->db->setOpleidingsblokActief($this->opleidingsblok_actief);
+        $this->db->setFkOpleidingId($this->fk_opleiding_id);
+        $this->db->createOpleidingsblokDb();
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CBE end
     }
 
@@ -279,39 +255,35 @@ class Opleiding
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function updateOpleiding($id)
+    public function updateOpleidingsblok($id)
     {
        
         
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC0 begin
-         $this->db->setOpleidingNaam($this->opleiding_naam);
-        $this->db->setOpleidingStartDatum($this->opleiding_start_datum);
-        $this->db->setOpleidingEindDatum($this->opleiding_eind_datum);
-        $this->db->setOpleidingNiveau($this->opleiding_niveau);
-        $this->db->setOpleidingDuur($this->opleiding_duur);
-        $this->db->setOpleidingActief($this->opleiding_actief);
-        $this->db->updateOpleidingDb($id);
+        $this->db->setOpleidingsblokNaam($this->opleidingsblok_naam);
+        $this->db->setOpleidingsblokOmschrijving($this->opleidingsblok_omschrijving);
+        $this->db->setOpleidingsblokActief($this->opleidingsblok_actief);
+        $this->db->setFkOpleidingId($this->fk_opleiding_id);
+        $this->db->updateOpleidingsblokDb($id);
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC0 end
     }
 
     /**
-     * Short description of method deleteOpleiding
+     * Short description of method deleteOpleidingsblok
      *
      * @access public
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function deleteOpleiding()
+    public function deleteOpleidingsblok()
     {
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC2 begin
-           return $this->dbOpleiding->deleteOpleiding($id);
+           return $this->db->deleteOpleidingsblok($id);
         // section -84-19-69-71-760cb3f:14bee879415:-8000:0000000000000CC2 end
     }
     
-    public function getOpleidingByName($opleiding_naam){
-        return $this->db->getOpleidingByName($opleiding_naam);
+    public function getByOpleiding($opleiding_id) {
+        return $this->db->getByOpleiding($opleiding_id);
     }
 
 } /* end of class Opleiding */
-
-?>

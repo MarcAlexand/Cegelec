@@ -1,37 +1,86 @@
 <?php
-include_once FILE_M_LOCAITE;
 
 
-$locatie = new Locatie(new DbLocatie());
-$locatie_array = $locatie->getList();
 
-$countArray = count($locatie_array);
-?>
+
+    if (isset($_GET['subpage'])) {
+        switch ($_GET['subpage']) {
+            case "locatie": include 'locatieoverzicht.php';
+                break;
+            case "nieuwelocatie": include 'nieuwelocatie.php';
+                break;
+            case "locatieaanpassen": include 'locatieaanpassen.php';
+                break;
+        }
+    } else {
+        $locatie = new Locatie(new DbLocatie());
+        $locatie_list= $locatie->getLocatieList();
+        ?>
 <h2>
-    Locatieoverzicht
+    Locatie overzicht
 </h2>
+<nav>
+    <div id="">
+        <a href="?page=dashboard">
+            <img src="img/dashboardbutton.png" />
+        </a>
+    </div>
+   
+ 
+            <a href="?page=locatie">Alle locaties</a>
+    
+        <a href="?page=locatie&subpage=nieuwelocatie">Nieuwe locaties</a>
+    
+</nav>
 <table border="1">
-    <head> 
+    <thead> 
        <tr>
-            <th>Locatienaam</th>
-            <th>Locatiebeschrijving</th>
+            <th>Wijzigen</th>
+            <th>Actief</th>
+            <th>Naam</th>
+            <th>Telefoonnummer</th>
+            <th>Straat</th>
+            <th>Postcode</th>
+            <th>Plaats</th>
         </tr>
-        </table>
-    </head>
-    <body>
+    </thead>
+    <tbody>
 <?php
-    for ($i = 0; $i < $countArray; $i++) {
-        echo '<tr>';
-        echo '<td>';
-        echo $locatie_array[$i]['locatie_naam'];
-        echo '</td>';
-        echo '<td>';
-        echo '<a href="?page=locatie&subpage=locatieview&id='
-            . $locatie_array[$i]['locatie_id'] . '">
-            </a>';
-        echo '</td>';
-        echo '</tr>';
+    foreach($locatie_list as $idx => $locatietest) {
+        echo '<tr>'
+               . ' <td>'.
+                    '<a href="?page=locatie&subpage=locatieaanpassen&id='
+                        .$locatietest->getLocatieId(). '">
+                            <img width="30" src="img/aanpassen.png""/>
+                    </a>'
+                . '</td>'
+                . '<td>';
+                if($locatietest->getLocatieActief() == 1){
+                        echo '<img  width="30" src="img/gebruiker_actief.png" />';
+                } else {
+                    echo '<img width="30" src="img/gebruiker_inactief.png" />';
+                } echo '</td>'
+                . '<td>'
+                    .$locatietest->getLocatieNaam()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatieTelefoonnummer()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatieStraat()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatiePostcode()
+                . '</td>'
+                . '<td>'
+                    .$locatietest->getLocatiePlaats()
+                . '</td>'
+            .'</tr>';
     }
 ?>
-    </body>
-</html>
+    </tbody>
+</table>
+
+  <?php
+}
+?>

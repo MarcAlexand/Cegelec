@@ -8,6 +8,7 @@
 
 td, th {
     color: white; 
+    font-size: 20px;
 }
 * {
     margin: 0 auto;
@@ -49,8 +50,8 @@ Dashboard
     float: left;
     width: 50%;
 }
-#dashboardbutton img {
-    min-width: 50px;
+#dashboardbutton img, #dashboardbutton input {
+    max-width: 50px;
     min-height: 50px;
 }
 
@@ -73,7 +74,6 @@ p {
         text-align: left;
 }
 #main a{
-	font-size: 100%;
 	text-decoration: blink;
 	color: white;
 	font-family: "Segoe UI Light";

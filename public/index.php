@@ -2,6 +2,7 @@
 require "../vendor/autoload.php";
 ob_start();
 include_once '../app/defs/constants.php';
+include_once '../app/defs/db_constants.php';
 $rechten = new RechtConstants();
 $reflection = new ReflectionClass($rechten);
 $recht_array = $reflection->getConstants();
