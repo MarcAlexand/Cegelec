@@ -11,8 +11,7 @@ if(isset($_POST['Verzenden'])) {
     $rules = [
         'opleidingsblok_naam' => 'required',
         'opleidingsblok_omschrijving' => 'required',
-        'opleidingsblok_actief' => 'required',
-        'fk_opleiding_id' => 'required'
+        'opleidingsblok_actief' => 'required'
     ];
     array_pop($_POST);
     $validator = new Validator($_POST, $rules);
@@ -20,10 +19,10 @@ if(isset($_POST['Verzenden'])) {
 
     if(!$errors) {
         // db       
+        $opleidingsblok->setFkOpleidingId($_GET['id']);
         $opleidingsblok->setOpleidingsblokNaam($_POST['opleidingsblok_naam']);
         $opleidingsblok->setOpleidingsblokOmschrijving($_POST['opleidingsblok_omschrijving']);
         $opleidingsblok->setOpleidingsblokActief($_POST['opleidingsblok_actief']);
-        $opleidingsblok->setFkOpleidingId($_POST['fk_opleiding_id']);
         $opleidingsblok->createOpleidingsblok();
         
             echo "<div id='result'>";
@@ -35,7 +34,7 @@ if(isset($_POST['Verzenden'])) {
 ?>
 
 
-<form method="post" name="form1" id="ticketform" action="#">    <br/><h2>Opleidingsblok Toevoegen</h2>
+<form method="post" name="form1" id="ticketform" action="">    <br/><h2>Opleidingsblok Toevoegen</h2>
   
     <table class="formulier">
                 
@@ -81,20 +80,7 @@ if(isset($_POST['Verzenden'])) {
                 </select>
             </td>
             </tr>
-            <tr>
-            <td>
-                <label class="f1"for="fk_opleiding_id">Opleidingsblok koppelen met:</label>
-            </td>
-            <td>
-                <select name="fk_opleiding_id"><?php
-                    foreach ($opleiding_array as $idx => $opleiding_object) {
-                        echo '<option value="' . $opleiding_object['opleiding_id'] . '">' . $opleiding_object['opleiding_naam'] . "</option>\n";
-                    }?>
-                    
-                </select>
-            </td>
-            </tr>
-        </tr>
+            
             
                       <tr>
                 <td>

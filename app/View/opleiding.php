@@ -45,6 +45,9 @@ $opleidingsblok = new Opleidingsblok();
                 break;
              case "opleidingsblokaanpassen": include 'opleidingsblokaanpassen.php';
                 break;
+            case "opleidingdetails": include 'opleidingdetails.php';
+                break;
+           
                
         }
     } else {
@@ -63,7 +66,7 @@ $opleidingsblok = new Opleidingsblok();
                     <th>Einddatum</th>
                     <th>Niveau</th>
                     <th>Duur</th>
-                    <th>Heeft opleidingsblokken</th>
+                    <th>Extra informatie</th>
                   
                     
                 </tr>
@@ -107,12 +110,22 @@ $opleidingsblok = new Opleidingsblok();
                 . '<td>'
                     . $opleiding_object['opleiding_duur']
                 . '</td>'
-                . '<td>' .
-                        '<select>';
-                        foreach($blok_array as $blok){
-                            echo "<option value='".$blok['opleidingsblok_id']."'>" . $blok['opleidingsblok_naam'] . "</option>";
+                . '<td>' ;
+                        if ($opleiding_object['opleiding_naam'] == "OAT") {
+                            echo '<a href="?page=opleiding&subpage=opleidingdetails&opleidingid='.$opleiding_object['opleiding_id'].'"><button type="button" class="knopje">Extra informatie</button></a>';
                         }
-                        echo '</select>' .
+                        else if ($opleiding_object['opleiding_naam'] == "OTI") {
+                            echo '<a href="?page=opleiding&subpage=opleidingdetails&opleidingid='.$opleiding_object['opleiding_id'].'"><button type="button" class="knopje">Extra informatie</button></a>';
+                        }
+                        else  {
+                            echo '<a href="?page=opleiding&subpage=opleidingdetails&opleidingid='.$opleiding_object['opleiding_id'].'"><button type="button" class="knopje">Extra informatie</button></a>';
+                        }
+                        
+//                        '<select>';
+//                        foreach($blok_array as $blok){
+//                            echo "<option value='".$blok['opleidingsblok_id']."'>" . $blok['opleidingsblok_naam'] . "</option>";
+//                        }
+//                        echo '</select>' .
                  '</td>'
             .'</tr>';
     }

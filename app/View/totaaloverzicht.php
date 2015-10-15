@@ -8,7 +8,7 @@ $opleiding_array = $opleiding->getOpleidingList();
 ?>
 
 <h2>
-    <br/>Totaaloverzicht<br/>
+    <br/>Leerlingvolgsysteem<br/>
 </h2>
 <div id="">
     <div id="">

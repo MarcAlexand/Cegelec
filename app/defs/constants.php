@@ -98,10 +98,10 @@ define("WWW_ROOT",                          "/cegelec/");
  define("URL_LOCATIE_BEHEER",               "?page=locatie");
  
  
- // TOTAALOVERZICHT
+ // LEERLINGVOLGSYSTEEM
  define("FILE_V_TOTAAL_OVERZICHT",            DIR_VIEW."totaaloverzicht.php");
  define("URL_TOTAAL_OVERZICHT",             "?page=totaaloverzicht");
- define("URL_WEERGEVEN_TOTAAL_OVERZICHT",   "Totaaloverzicht");
+ define("URL_WEERGEVEN_TOTAAL_OVERZICHT",   "Leerlingvolgsysteem");
  
 // MEETWAARDE
  

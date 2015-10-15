@@ -55,6 +55,7 @@ if(isset($_POST['Verzenden'])) {
      */
     
     try {
+        $opleidingsblok->setFkOpleidingId($_GET['id']);
         $opleidingsblok->setOpleidingsblokNaam($_POST['opleidingsblok_naam']);
         $opleidingsblok->setOpleidingsblokOmschrijving($_POST['opleidingsblok_omschrijving']);
         $opleidingsblok->setOpleidingsblokActief($_POST['opleidingsblok_actief']);

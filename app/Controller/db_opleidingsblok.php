@@ -254,7 +254,7 @@ class DbOpleidingsblok
    
             $result = $this->dbquery($sql);
    
-        
+
             return true;
      //   if (!$this->dbquery($sql)) {
      //       return false;
