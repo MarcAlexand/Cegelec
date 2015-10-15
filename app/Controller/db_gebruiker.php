@@ -752,9 +752,19 @@ class DbGebruiker extends database {
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getGebruikerCoachId() {
+    public function getGebruikerCoachId($gebruiker_coachID) {
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DE9 begin
-        return $this->gebruiker_coachId;
+        $query = "SELECT * FROM gebruiker WHERE (gebruiker_coachid = '$gebruiker_coachID')";
+
+        $this->dbQuery($query);
+        $user = $this->dbFetchAll($query);
+
+        if ($gebruiker_coachID == NULL) {
+            return FALSE;
+        } else {
+            // als het niet null is, return the array.
+            return $gebruiker_coachID;
+        }
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DE9 end
     }
 
@@ -765,9 +775,19 @@ class DbGebruiker extends database {
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getGebruikerProjectleiderId() {
+    public function getGebruikerProjectleiderId($gebruiker_projectleiderID) {
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DEB begin
-        return $this->gebruiker_projectleiderId;
+        $query = "SELECT * FROM gebruiker WHERE gebruiker_projectleiderid = '$gebruiker_projectleiderID'";
+
+        $this->dbQuery($query);
+        $user = $this->dbFetchAll($query);
+
+        if ($gebruiker_projectleiderID == NULL) {
+            return FALSE;
+        } else {
+            // als het niet null is, return the array.
+            return $gebruiker_projectleiderID;
+        }
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DEB end
     }
 
@@ -778,9 +798,19 @@ class DbGebruiker extends database {
      * @author firstname and lastname of author, <author@example.org>
      * @return mixed
      */
-    public function getGebruikerDocentId() {
+    public function getGebruikerMentorId($gebruiker_mentorID) {
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DED begin
-        return $this->gebruiker_docentId;
+        $query = "SELECT * FROM gebruiker WHERE (gebruiker_mentorid = '$gebruiker_mentorID')";
+
+        $this->dbQuery($query);
+        $user = $this->dbFetchAll($query);
+
+        if ($gebruiker_mentorID == NULL) {
+            return FALSE;
+        } else {
+            // als het niet null is, return the array.
+            return $gebruiker_mentorID;
+        }
         // section -64--88-2-12-43daa01f:14c8e4f8854:-8000:0000000000000DED end
     }
 

@@ -28,7 +28,14 @@
                     <?php echo URL_WEERGEVEN_OVERZICHT_LOCATIE; ?>
                 </a>
             </div>
-            <div id="dashboardbutton" style="margin: 0 auto; width: 100%;">
+            <div id="dashboardbutton">
+                <a href="<?php echo URL_TOTAAL_OVERZICHT; ?>">
+                    <img src="img/totaaloverzicht.png">
+                    </br>
+                    <?php echo URL_WEERGEVEN_TOTAAL_OVERZICHT; ?>
+                </a>
+            </div>
+            <div id="dashboardbutton" ">
                 <form method="POST" id="logout" name="logout">
                     <input type="hidden"  name="logout" value="true">
                     <input type="image" src="img/uitloggenbut.png"> 
@@ -37,3 +44,4 @@
                 <?php echo URL_WEERGEVEN_UITLOGGEN; ?>
                     </a>
             </div>
+<!--style="margin: 0 auto; width: 100%;-->

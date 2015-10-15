@@ -327,6 +327,18 @@ class Gebruiker
     public function getGebruikerByActief($status) {
         return $this->db->getGebruikerByActiefDb($status);
     }
+    
+    public function getGebruikerProjectleiderId($id) {
+        return $this->db->getGebruikerProjectleiderId($id);
+    }
+    
+    public function getGebruikerMentorId($id) {
+        return $this->db->getGebruikerMentorId($id);
+    }
+    
+    public function getGebruikerCoachId($id) {
+        return $this->db->getGebruikerCoachId($id);
+    }
 
     /**
      * Return list of all users.

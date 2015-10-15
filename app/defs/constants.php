@@ -97,7 +97,12 @@ define("WWW_ROOT",                          "/cegelec/");
  define("URL_WEERGEVEN_OVERZICHT_LOCATIE",  "Locaties");
  define("URL_LOCATIE_BEHEER",               "?page=locatie");
  
-
+ 
+ // TOTAALOVERZICHT
+ define("FILE_V_TOTAAL_OVERZICHT",            DIR_VIEW."totaaloverzicht.php");
+ define("URL_TOTAAL_OVERZICHT",             "?page=totaaloverzicht");
+ define("URL_WEERGEVEN_TOTAAL_OVERZICHT",   "Totaaloverzicht");
+ 
 // MEETWAARDE
  
  define("FILE_M_MEETWAARDE",                DIR_MODEL."meetwaarde.php");

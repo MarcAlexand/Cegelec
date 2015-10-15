@@ -54,6 +54,9 @@ if (!$login->isloggedin()) {
                 case "leerling":
                     include FILE_V_LEERLING;
                     break;
+                case "totaaloverzicht":
+                    include FILE_V_TOTAAL_OVERZICHT;
+                    break;
             }
         } else {
             include FILE_V_DASHBOARD;
